@@ -1,6 +1,10 @@
-## National University Capstone Project
-## Vision Processing and Object Detection.
+##                                                      National University Capstone Project
+##                                                      Vision Processing and Object Detection
 
+
+
+
+# Goal of this Project
 
 
 
