@@ -6,7 +6,7 @@ Created on Jan 21, 2018
 '''
 
 from flask import Flask, render_template, Response
-from vision.cameraClass import VideoCamera
+from vision.streaming.cameraClass import VideoCamera
 
 app = Flask(__name__)
 
