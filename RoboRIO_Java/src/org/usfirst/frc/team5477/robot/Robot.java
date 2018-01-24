@@ -19,9 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
-public class Robot extends IterativeRobot()
+public class Robot
 {
-	
 	public void operatorControl()
 	{
 		double counter = 0.0;
