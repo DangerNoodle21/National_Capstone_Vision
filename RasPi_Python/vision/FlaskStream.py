@@ -4,7 +4,7 @@ Created on Jan 21, 2018
 @author: marcd
 
 '''
-
+import vision
 from vision import cameraClass
 from flask import Flask, render_template, Response
 
