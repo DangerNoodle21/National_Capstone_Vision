@@ -4,9 +4,9 @@ Created on Jan 21, 2018
 @author: marcd
 
 '''
-import vision
-from vision import cameraClass
+
 from flask import Flask, render_template, Response
+from vision.cameraClass import VideoCamera
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def gen(camera):
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen(cameraClass()),
+    return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
