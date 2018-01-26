@@ -1,3 +1,4 @@
+
 """
 Press 'p' to take a picture from stream
 

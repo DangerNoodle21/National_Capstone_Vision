@@ -1,3 +1,4 @@
+
 """
 Press 'p' to take a picture from stream
 
@@ -31,8 +32,9 @@ def click():
     cv2.imshow("Picture", picture_1)
    
     #Thresh hold values, creates thresh hold image from one taken
-    thresh = cv2.adaptiveThreshold(picture_1, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
-    cv2.imshow("CV ADADAPTIVE-THRESH", thresh)
+    thresh = 85
+    ret, thresh = cv2.threshold(picture_1, thresh, 255, cv2.THRESH_BINARY)
+    cv2.imshow("CV THRESH", thresh)
 
 
 cv2.namedWindow("Video")

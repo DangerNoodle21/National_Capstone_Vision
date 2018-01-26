@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>cac0978f-e0f5-4527-b04a-1ac1d342799e</ProjectGuid>
+    <ProjectGuid>2580e345-8099-4f55-81c6-a4c68f5a5d03</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>pyVision.py</StartupFile>
     <SearchPath>
@@ -21,7 +21,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adaptive_Thresh.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="click_Circle.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pyVision.py" />
+    <Compile Include="simple_Thresh.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="take_Picture.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
