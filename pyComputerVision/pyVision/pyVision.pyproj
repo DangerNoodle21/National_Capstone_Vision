@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2580e345-8099-4f55-81c6-a4c68f5a5d03</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>advanced_contours.py</StartupFile>
+    <StartupFile>obj_filterting.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -39,6 +39,9 @@
     <Compile Include="ID_Distance\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="obj_filterting.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="simple_Thresh.py">
       <SubType>Code</SubType>
     </Compile>
@@ -48,9 +51,6 @@
     <Compile Include="test_contours.py">
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="detect_blob.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ID_Distance\" />

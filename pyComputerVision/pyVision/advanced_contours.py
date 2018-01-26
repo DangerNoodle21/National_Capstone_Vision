@@ -72,6 +72,7 @@ def take_picture():
 
     for c in contours:
         cv2.drawContours(objects, [c], -1, color, -1)
+        
 
         area = cv2.contourArea(c)
         perimeter = cv2.arcLength(c, True)
@@ -85,7 +86,7 @@ def take_picture():
         cy = int( M['m01']/(M['m00'] + 1))
 
         #Centriods
-        cv2.circle(objects, (cx,cy), 1, (0, 0, 255), -1)
+        cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
         
         #Prints the area in Pixels of the found contours
         print("Area: {}, perimeter: {}".format(area, perimeter))
