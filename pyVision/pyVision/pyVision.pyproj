@@ -2,16 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>f527b191-2718-4f33-a2aa-c115a6265ccf</ProjectGuid>
-    <ProjectHome>
-    </ProjectHome>
-    <StartupFile>adative-thresh.py</StartupFile>
+    <ProjectGuid>cac0978f-e0f5-4527-b04a-1ac1d342799e</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>pyVision.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Vision-Basics</Name>
-    <RootNamespace>PythonApplication1</RootNamespace>
+    <Name>pyVision</Name>
+    <RootNamespace>pyVision</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,16 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adative-thresh.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="circle_click.py" />
-    <Compile Include="threshPic.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="press_picture.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="pyVision.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
