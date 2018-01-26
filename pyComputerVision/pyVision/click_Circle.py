@@ -22,6 +22,7 @@ color = (0,255,0)
 line_width = 3
 radius = 100
 point = (0,0)
+font = cv2.FONT_HERSHEY_SIMPLEX
 
 def click(event, x, y, flags, param):
     global point, pressed
@@ -37,6 +38,8 @@ while(True):
     ret, frame = cap.read()
     
     ch = cv2.waitKey(1) # 1 - Waits 1 mils to run loop again
+
+    cv2.putText(frame, 'test', (210, 240), font, 4, (0,255,0), 4, cv2.LINE_AA)
    
     frame = cv2.resize(frame, (0,0), fx=1.5, fy=1.5)
     

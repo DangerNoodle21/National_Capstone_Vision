@@ -14,6 +14,11 @@ import numpy as np
 
 
 cap = cv2.VideoCapture(0) # Unlimited Capture --> 0
+green_color = (0,255,0)
+position = (100, -100)
+font = cv2.FONT_HERSHEY_SIMPLEX
+
+
 
 def click():
 
@@ -32,9 +37,16 @@ def click():
     cv2.imshow("Picture", picture_1)
    
     #Thresh hold values, creates thresh hold image from one taken
-    thresh = 85
-    ret, thresh = cv2.threshold(picture_1, thresh, 255, cv2.THRESH_BINARY)
-    cv2.imshow("CV THRESH", thresh)
+    user_thresh_id = 125
+    userChoice = str(user_thresh_id) 
+    ret, user_thresh = cv2.threshold(picture_1, user_thresh_id, 255, cv2.THRESH_BINARY)
+
+    #, out
+    cv2.putText(user_thresh, userChoice, (300, 300), font, 4, (0,255,0), 4, cv2.LINE_AA)
+    cv2.imshow("CV USER THRESH", user_thresh)
+
+    thres_adapt = cv2.adaptiveThreshold(picture_1, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
+    cv2.imshow("Adaptive Threshold", thres_adapt)
 
 
 cv2.namedWindow("Video")

@@ -32,7 +32,7 @@ def click():
     cv2.imshow("Picture", picture_1)
    
     #Thresh hold values, creates thresh hold image from one taken
-    thresh = 85
+    thresh = 150
     ret, thresh = cv2.threshold(picture_1, thresh, 255, cv2.THRESH_BINARY)
     cv2.imshow("CV THRESH", thresh)
 

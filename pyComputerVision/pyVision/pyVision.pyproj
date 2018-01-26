@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2580e345-8099-4f55-81c6-a4c68f5a5d03</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>pyVision.py</StartupFile>
+    <StartupFile>advanced_contours.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,16 +24,25 @@
     <Compile Include="adaptive_Thresh.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="advanced_contours.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="click_Circle.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="pyVision.py" />
+    <Compile Include="contours.py" />
     <Compile Include="simple_Thresh.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="take_Picture.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test_contours.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="detect_blob.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
