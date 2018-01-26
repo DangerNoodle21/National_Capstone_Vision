@@ -1,6 +1,7 @@
 
 
 
+
 """
 Press 'p' to take a picture from stream
 
@@ -9,8 +10,6 @@ Will make thresh hold comparison
 Press 'q' to quit
 
 
-"""
-"""
 
     Threshhold Creation - Parameters:
 
@@ -47,24 +46,18 @@ def take_picture():
     #read image from file, finds out height and width
     picture_1 = cv2.imread('Picture1.png', 1)
 
-    #Converts picture into grey scale image
-    gray = cv2.cvtColor(picture_1, cv2.COLOR_RGB2GRAY)
+    #Converts picture1 into grey scale image
+    pic1_gray = cv2.cvtColor(picture_1, cv2.COLOR_RGB2GRAY)
 
+    adapt_thres = cv2.adaptiveThreshold(pic1_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
 
-    #User Thresh Value
-    thresh = 175
-    ret, user_thresh = cv2.threshold(gray, thresh, 255, cv2.THRESH_BINARY)
-    cv2.imshow("user_thresh", user_thresh)
-   
-
-
-    _, contours, hierarchy = cv2.findContours(user_thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _, contours, hierarchy = cv2.findContours(adapt_thres, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     index = -1
     thickness = 4
     color = (0, 255, 0)
 
-    cv2.drawContours(user_thresh, contours, index, color, thickness)
-    cv2.imshow("user_thresh_Contours", user_thresh)
+    cv2.drawContours(adapt_thres, contours, index, color, thickness)
+    cv2.imshow("adapt_thres", adapt_thres)
 
     # Array to stores the countour data from above
     objects = np.zeros([picture_1.shape[0], picture_1.shape[1], 3], 'uint8')
@@ -102,7 +95,7 @@ cv2.namedWindow("Video")
 while(True):
     ret, frame = cap.read()
 
-    frame = cv2.resize(frame, (0,0), fx=1.5, fy=1.5)
+    frame = cv2.resize(frame, (0,0), fx=1, fy=1)
     cv2.imshow("Video", frame)
 
     ch2 = cv2.waitKey(1)

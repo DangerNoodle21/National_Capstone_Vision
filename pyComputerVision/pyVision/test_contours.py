@@ -14,6 +14,8 @@ thickness = 4
 color = (255, 0, 255)
 
 objects = np.zeros([img.shape[0], img.shape[1],3], 'uint8')
+cv2.imshow("Contours-Before",objects)
+
 for c in contours:
 	cv2.drawContours(objects, [c], -1, color, -1)
 
@@ -27,7 +29,7 @@ for c in contours:
 
 	print("Area: {}, perimeter: {}".format(area,perimeter))
 
-cv2.imshow("Contours",objects)
+cv2.imshow("Contours - After",objects)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()

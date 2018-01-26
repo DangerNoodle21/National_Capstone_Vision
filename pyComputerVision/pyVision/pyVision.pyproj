@@ -27,10 +27,18 @@
     <Compile Include="advanced_contours.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="adv_countours2.py" />
+    <Compile Include="cannyEdgest.py" />
     <Compile Include="click_Circle.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="contours.py" />
+    <Compile Include="ID_Distance\class1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ID_Distance\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="simple_Thresh.py">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="detect_blob.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ID_Distance\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

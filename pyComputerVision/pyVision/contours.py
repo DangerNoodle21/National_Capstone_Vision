@@ -10,6 +10,26 @@ Press 'q' to quit
 
 """
 
+"""
+
+    Threshhold Creation - Parameters:
+
+        src – Source 8-bit single-channel image.
+
+        dst – Destination image of the same size and the same type as src .
+
+        maxValue – Non-zero value assigned to the pixels for which the condition is satisfied - MAX PIXEL VAULE FOR IMAGE
+
+        adaptiveMethod – Adaptive thresholding algorithm to use, ADAPTIVE_THRESH_MEAN_C or ADAPTIVE_THRESH_GAUSSIAN_C . See the details below.
+
+        thresholdType – Thresholding type that must be either THRESH_BINARY or THRESH_BINARY_INV .
+
+        blockSize – Size of a pixel neighborhood that is used to calculate a threshold value for the pixel: 3, 5, 7, and so on.
+
+        C – Constant subtracted from the mean or weighted mean (see the details below). Normally, it is positive but may be zero or negative as well.
+
+"""
+
 import cv2
 import numpy as np
 
@@ -34,25 +54,7 @@ def take_picture():
 
 
     
-    """
-
-    Threshhold Creation - Parameters:
-
-        src – Source 8-bit single-channel image.
-
-        dst – Destination image of the same size and the same type as src .
-
-        maxValue – Non-zero value assigned to the pixels for which the condition is satisfied - MAX PIXEL VAULE FOR IMAGE
-
-        adaptiveMethod – Adaptive thresholding algorithm to use, ADAPTIVE_THRESH_MEAN_C or ADAPTIVE_THRESH_GAUSSIAN_C . See the details below.
-
-        thresholdType – Thresholding type that must be either THRESH_BINARY or THRESH_BINARY_INV .
-
-        blockSize – Size of a pixel neighborhood that is used to calculate a threshold value for the pixel: 3, 5, 7, and so on.
-
-        C – Constant subtracted from the mean or weighted mean (see the details below). Normally, it is positive but may be zero or negative as well.
-
-    """
+    
 
     _, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
