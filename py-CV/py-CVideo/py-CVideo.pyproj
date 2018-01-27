@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>py_CVideo.py</StartupFile>
+    <StartupFile>Basic\canny_edges.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,24 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Basic\canny_edges.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\contours.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\object_Flitering.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\simple_thresh.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\take_picture.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="py_CVideo.py" />
     <Compile Include="Video\class1.py">
       <SubType>Code</SubType>
@@ -30,6 +48,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo\Basic\" />
     <Folder Include="Video\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
