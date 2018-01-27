@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2580e345-8099-4f55-81c6-a4c68f5a5d03</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>obj_filterting.py</StartupFile>
+    <StartupFile>Video_testing\V-Test.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -42,6 +42,13 @@
     <Compile Include="obj_filterting.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Video_testing\V-Test.py" />
+    <Compile Include="Video_testing\vision_test_square.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Video_testing\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="simple_Thresh.py">
       <SubType>Code</SubType>
     </Compile>
@@ -54,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ID_Distance\" />
+    <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\pyComputerVision\pyVision\Video_testing\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

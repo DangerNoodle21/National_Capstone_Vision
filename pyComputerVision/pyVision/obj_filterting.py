@@ -42,9 +42,9 @@ def take_picture():
     filtered = []
     
     for c in contours:
-        if cv2.contourArea(c) < 2500:
+        if cv2.contourArea(c) < 2200:
             continue
-        elif cv2.contourArea(c) > 3000:
+        elif cv2.contourArea(c) > 2500:
             continue
         else:
             filtered.append(c)
@@ -62,10 +62,7 @@ def take_picture():
         #Draws and outline around the contour, green
         cv2.drawContours(objects, [c], -1, (0,255,0), 3)
 
-        #Area and Perimter
-        area = cv2.contourArea(c)
-        perimeter = cv2.arcLength(c, True)
-
+        
         #Centriod
         # Had to add +1 to advoid Dividion by Zero erro
         M = cv2.moments(c)
@@ -74,9 +71,11 @@ def take_picture():
 
         #Centriods
         cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
+        #Area and Perimter
         area = cv2.contourArea(c)
-        p = cv2.arcLength(c,True)
-        print(area,p)
+        perimeter = cv2.arcLength(c, True)
+
+        print("(X,Y): ", cx, cy, "Color: ", col, "Area: ", area, "Perimter: ", perimeter)
 
     cv2.imshow("Contours_Filtering",objects)
 
