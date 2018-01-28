@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\canny_edges.py</StartupFile>
+    <StartupFile>Video\video_user_thresh.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -40,7 +40,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="py_CVideo.py" />
-    <Compile Include="Video\class1.py">
+    <Compile Include="Video\video_adaptive.py" />
+    <Compile Include="Video\video_user_thresh.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Video\__init__.py">
@@ -48,6 +49,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Basic\" />
     <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo\Basic\" />
     <Folder Include="Video\" />
   </ItemGroup>
