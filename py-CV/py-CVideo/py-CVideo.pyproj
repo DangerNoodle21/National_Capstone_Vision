@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Video\video_user_thresh.py</StartupFile>
+    <StartupFile>Video\video_color_contours.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -41,6 +41,10 @@
     </Compile>
     <Compile Include="py_CVideo.py" />
     <Compile Include="Video\video_adaptive.py" />
+    <Compile Include="Video\video_color_contours.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Video\video_Color_Hough.py" />
     <Compile Include="Video\video_user_thresh.py">
       <SubType>Code</SubType>
     </Compile>

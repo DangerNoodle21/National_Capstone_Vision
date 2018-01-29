@@ -1,10 +1,13 @@
 """
 In this code:
 
-1. Takes picture with keyboard press
-2. Writes Words picture takes
-3. Clicking Puts a circle on the Screen
+1. User defined threshold
+2. Gass Blur
+3. Contours
+4. Contour filtering
 
+End Output - This will find a 5' x 3' reflective tape square
+    about 4 feet away from the camera
 
 
 Press 'q' to quit

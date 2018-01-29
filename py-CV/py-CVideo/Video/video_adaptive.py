@@ -1,11 +1,15 @@
 """
 In this code:
 
-1. Takes picture with keyboard press
-2. Writes Words picture takes
-3. Clicking Puts a circle on the Screen
 
 
+1. Adaptive Threshold 
+2. Gass Blur
+3. Contours
+4. Contour filtering
+
+End Output - This will find a 5' x 3' reflective tape square
+    about 4 feet away from the camera
 
 Press 'q' to quit
 
@@ -36,12 +40,14 @@ while(True):
     #Adaptive Threhold
     adapt_thresh = cv2.adaptiveThreshold(takePic1, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 175, 1)
 
+    #Finds the Contours in frame taken, then prints the amount it finds
     _, contours, hierarchy = cv2.findContours(adapt_thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
     print(len(contours))
 
+    #Array for storing flitered Contours
     filtered = []
     
+    #For loop for filtering out contours based on pixel Area
     for c in contours:
         if cv2.contourArea(c) < 1000:
             continue
@@ -53,10 +59,8 @@ while(True):
 
     objects = np.zeros([takePic1.shape[0], takePic1.shape[1],3], 'uint8')
 
-
+    #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
     for c in filtered:
-       
-
 
         #Draws and outline around the contour, green
         cv2.drawContours(objects, [c], -1, (0,255,0), 3)
