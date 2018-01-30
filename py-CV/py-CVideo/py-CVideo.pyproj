@@ -7,7 +7,7 @@
     <StartupFile>Video\video_color_contours.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>C:\Users\marcd\source\repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>py-CVideo</Name>
     <RootNamespace>py-CVideo</RootNamespace>
