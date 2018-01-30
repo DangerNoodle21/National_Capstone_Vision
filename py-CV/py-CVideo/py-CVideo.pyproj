@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Video\video_color_contours.py</StartupFile>
+    <StartupFile>py_CVideo.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>C:\Users\marcd\source\repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>py-CVideo</Name>
     <RootNamespace>py-CVideo</RootNamespace>
+    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +57,10 @@
     <Folder Include="Basic\" />
     <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo\Basic\" />
     <Folder Include="Video\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.6" />
+    <InterpreterReference Include="Global|PythonCore|3.6-32" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
