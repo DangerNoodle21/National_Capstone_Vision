@@ -78,8 +78,8 @@ def videoStream():
 
         #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
         for c in filtered:
-
-            i2cData = []
+            
+   
 
             #Draws and outline around the contour, green
             cv2.drawContours(objects, [c], -1, (0,255,0), 3)
@@ -89,7 +89,6 @@ def videoStream():
             # Had to add +1 to advoid Dividion by Zero erro
             M = cv2.moments(c)
             cx = int( M['m10']/(M['m00'] + 1))
-
             cy = int( M['m01']/(M['m00'] + 1))
 
             #Centriods
@@ -101,10 +100,13 @@ def videoStream():
 
             print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
 
-            i2cData.extend([cx, cy, perimeter, area])
 
+            i2cString = "(X,Y): " + str(cx) + ", " + str(cy) + " Permeter: " + str(perimeter) + " Area:" + str(area)
+            i2cData = list(i2cString)
+
+            
             for i in i2cData:
-                write_I2C(int(i))
+                write_I2C(int(ord(i)))
             write_I2C(int(0x0A))
 
         cv2.imshow("Video", canny_video)
