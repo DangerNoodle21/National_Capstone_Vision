@@ -101,10 +101,10 @@ def videoStream():
 
             print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
 
-            i2cData.extend([str(cx), str(cy), str(perimeter), str(area)])
+            i2cData.extend([cx, cy, perimeter, area])
 
             for i in i2cData:
-                write_I2C(int(ord(i)))
+                write_I2C(int(i))
             write_I2C(int(0x0A))
 
         cv2.imshow("Video", canny_video)
