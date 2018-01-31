@@ -42,18 +42,10 @@ def videoStream():
 
     while(True):
 
-        lower_white = np.array([0,0,167])
-        upper_white = np.array([180,255,255])
-
-
         #Pulls image from stream
         ret, video_stream = video_cap.read()
 
-        hsv_frame = cv2.cvtColor(video_stream, cv2.COLOR_BGR2HSV)
-
-        hsv_mask = cv2.inRange(hsv_frame, lower_white, upper_white)
-
-        blur_mask = cv2.GaussianBlur(hsv_mask, (3,3),0)
+        blur_mask = cv2.GaussianBlur(video_stream, (3,3),0)
 
         canny_video = cv2.Canny(blur_mask, 50, 200, None, 3)
 
@@ -97,25 +89,23 @@ def videoStream():
             # Had to add +1 to advoid Dividion by Zero erro
             M = cv2.moments(c)
             cx = int( M['m10']/(M['m00'] + 1))
-            i2cData.append(cx)
 
             cy = int( M['m01']/(M['m00'] + 1))
-            i2cData.append(cy)
 
             #Centriods
             cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
             #Area and Perimter
             area = cv2.contourArea(c)
-            i2cData.append(area)
 
             perimeter = cv2.arcLength(c, True)
-            i2cData.append(perimeter)
 
-            print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area, "Apsect Ratio:",)
+            print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
+
+            i2cData.extend(["(X, Y): ", cx, cy, "Permeter:", perimeter, "Area:", area])
 
             for i in i2cData:
                 write_I2C(int(ord(i)))
-                time.sleep(.1)
+            write_I2C(int(0x0A))
 
         cv2.imshow("Video", canny_video)
         cv2.imshow("Objects", objects)
