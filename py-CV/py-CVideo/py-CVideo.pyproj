@@ -3,15 +3,16 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
-    <ProjectHome></ProjectHome>
-    <StartupFile>Basic\take_picture.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>Video\rpi_test.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>py-CVideo</Name>
     <RootNamespace>py-CVideo</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,14 +42,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="py_CVideo.py" />
-    <Compile Include="Video\video_adaptive.py" />
-    <Compile Include="Video\video_color_contours.py">
+    <Compile Include="Video\rpi_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Video\video_Color_Hough.py" />
-    <Compile Include="Video\video_user_thresh.py">
+    <Compile Include="Video\vid_Adaptive.py" />
+    <Compile Include="Video\vid_contours.py" />
+    <Compile Include="Video\vid_Houghs.py" />
+    <Compile Include="Video\vid_Pi-Ard_Contours.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Video\vid_User-Thresh.py" />
     <Compile Include="Video\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -58,7 +61,7 @@
     <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6-32" />
+    <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
