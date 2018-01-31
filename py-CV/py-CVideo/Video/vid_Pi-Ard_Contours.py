@@ -101,7 +101,7 @@ def videoStream():
 
             print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
 
-            i2cData.extend(["(X, Y): ", cx, cy, "Permeter:", perimeter, "Area:", area])
+            i2cData.extend([cx, cy, perimeter, area])
 
             for i in i2cData:
                 write_I2C(int(ord(i)))
