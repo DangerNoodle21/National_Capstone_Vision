@@ -21,10 +21,13 @@ import cv2
 import numpy as np
 import math
 import sys
+from decimal import getcontext, Decimal
 
 
 #Starts Video Stream, Number is the Video Scource
 video_cap = cv2.VideoCapture(0)
+
+getcontext().prec = 3
 
 
 #Raspberry Pi Bus functions and Arduino I2C address
@@ -64,11 +67,9 @@ def videoStream():
         for c in contours:
             if cv2.contourArea(c) == 0:
                 continue
-            elif (cv2.arcLength(c, True) / cv2.contourArea(c)) > upper:
-                testratio1 = (cv2.arcLength(c, True) / cv2.contourArea(c))
+            elif Decimal((cv2.arcLength(c, True)) / Decimal(cv2.contourArea(c))) > upper:
                 continue
-            elif (cv2.arcLength(c, True) / cv2.contourArea(c)) < lower:
-                testratio2 = (cv2.arcLength(c, True) / cv2.contourArea(c))
+            elif Decimal((cv2.arcLength(c, True)) / Decimal(cv2.contourArea(c))) < lower:
                 continue
             else:
                 filtered.append(c)
@@ -94,9 +95,12 @@ def videoStream():
             #Centriods
             cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
             #Area and Perimter
+
+           
+
             area = cv2.contourArea(c)
 
-            perimeter = cv2.arcLength(c, True)
+            perimeter = Decimal(cv2.arcLength(c, True))
 
             print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
 
