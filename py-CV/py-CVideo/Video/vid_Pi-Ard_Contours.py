@@ -59,8 +59,8 @@ def videoStream():
 
         #Array for storing flitered Contours
         filtered = []
-        upper = 0.1
-        lower = 0.08
+        upper = Decimal(0.1)
+        lower = Decimal(0.08)
 
     
         #For loop for filtering out contours based on pixel Area
