@@ -69,7 +69,7 @@ def videoStream():
                 filtered.append(c)
         print(len(filtered))
 
-        objects = np.zeros([video_stream.shape[0], video_stream.shape[1],3], 'uint8')
+        objects = np.zeros([canny_video.shape[0], canny_video.shape[1],3], 'uint8')
 
         #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
         for c in filtered:
