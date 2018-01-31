@@ -59,17 +59,17 @@ def videoStream():
 
         #Array for storing flitered Contours
         filtered = []
-        upper = Decimal(0.1)
-        lower = Decimal(0.08)
+        upper = 0.1
+        lower = 0.08
 
     
         #For loop for filtering out contours based on pixel Area
         for c in contours:
             if cv2.contourArea(c) == 0:
                 continue
-            elif Decimal((cv2.arcLength(c, True)) / Decimal(cv2.contourArea(c))) > upper:
+            elif(cv2.arcLength(c, True) / cv2.contourArea(c)) > upper:
                 continue
-            elif Decimal((cv2.arcLength(c, True)) / Decimal(cv2.contourArea(c))) < lower:
+            elif (cv2.arcLength(c, True) / cv2.contourArea(c)) < lower:
                 continue
             else:
                 filtered.append(c)
@@ -100,7 +100,7 @@ def videoStream():
 
             area = cv2.contourArea(c)
 
-            perimeter = Decimal(cv2.arcLength(c, True))
+            perimeter = cv2.arcLength(c, True)
 
             print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
 
@@ -111,7 +111,6 @@ def videoStream():
             
             for i in i2cData:
                 write_I2C(int(ord(i)))
-                time.sleep(.01)
             write_I2C(int(0x0A))
 
         cv2.imshow("Video", canny_video)
