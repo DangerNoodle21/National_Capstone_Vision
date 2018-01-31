@@ -3,7 +3,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
-    <ProjectHome>C:\Users\dangerPC\source\repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo\</ProjectHome>
+    <ProjectHome></ProjectHome>
     <StartupFile>Basic\take_picture.py</StartupFile>
     <SearchPath>
     </SearchPath>
@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Basic\" />
-    <Folder Include="C:\Users\dangerPC\Source\Repos\Capstone_FRC-Vision_2018\py-CV\py-CVideo\Basic\" />
     <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
