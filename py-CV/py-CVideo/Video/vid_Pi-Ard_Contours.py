@@ -19,10 +19,9 @@ import smbus2
 import time
 import cv2
 import numpy as np
-import sys
 
 #Starts Video Stream, Number is the Video Scource
-video_cap = cv2.VideoCapture(0)
+video_cap = cv2.VideoCapture(1)
 
 #Raspberry Pi Bus functions and Arduino I2C address
 rpi_bus = smbus2.SMBus(1)
