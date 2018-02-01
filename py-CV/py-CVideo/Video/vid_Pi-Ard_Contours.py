@@ -46,9 +46,7 @@ def videoStream():
 
         gray_vid = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
 
-        blur_mask = cv2.GaussianBlur(gray_vid, (3,3), 0)
-
-        canny_video = cv2.Canny(blur_mask, 50, 200, None, 3)
+        canny_video = cv2.Canny(gray_vid, 50, 200, None, 3)
 
 
         #Finds the Contours in frame taken, then prints the amount it finds
