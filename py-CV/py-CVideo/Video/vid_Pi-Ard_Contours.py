@@ -19,16 +19,10 @@ import smbus2
 import time
 import cv2
 import numpy as np
-import math
 import sys
-from decimal import getcontext, Decimal
-
 
 #Starts Video Stream, Number is the Video Scource
 video_cap = cv2.VideoCapture(0)
-
-getcontext().prec = 3
-
 
 #Raspberry Pi Bus functions and Arduino I2C address
 rpi_bus = smbus2.SMBus(1)
@@ -102,11 +96,12 @@ def videoStream():
 
             perimeter = cv2.arcLength(c, True)
 
-            print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area)
+            print("(X,Y): ", cx, cy, "Permeter:", format(perimeter, '.2f'), "Area:", area)
 
 
-            i2cString = "(X,Y): " + str(cx) + ", " + str(cy) + " Permeter: " + str(perimeter) + " Area:" + str(area)
+            i2cString = "(X,Y): " + str(cx) + ", " + str(cy) + " Permeter: " + str(format(perimeter, '.2f')) + " Area:" + str(area)
             i2cData = list(i2cString)
+            print(i2cString)
 
             
             for i in i2cData:
