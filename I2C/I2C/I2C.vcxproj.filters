@@ -15,8 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Aru-Py_i2c.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <None Include="I2C.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.I2C.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
