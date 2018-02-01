@@ -15,13 +15,13 @@ Press 'q' to quit
 """
 
 
-import smbus2
+
 import time
 import cv2
 import numpy as np
 
-#Starts Video Stream, Number is the Video Scource
-video_cap = cv2.VideoCapture(1)
+import smbus2
+
 
 #Raspberry Pi Bus functions and Arduino I2C address
 rpi_bus = smbus2.SMBus(1)
@@ -33,6 +33,9 @@ def write_I2C(number):
 
 
 
+#Starts Video Stream, Number is the Video Scource
+video_cap = cv2.VideoCapture(0)
+
 #Funtion to start Video While Loop
 def videoStream():
 
@@ -41,7 +44,9 @@ def videoStream():
         #Pulls image from stream
         ret, video_stream = video_cap.read()
 
-        blur_mask = cv2.GaussianBlur(video_stream, (3,3),0)
+        gray_vid = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
+
+        blur_mask = cv2.GaussianBlur(gray_vid, (3,3), 0)
 
         canny_video = cv2.Canny(blur_mask, 50, 200, None, 3)
 
@@ -72,8 +77,6 @@ def videoStream():
 
         #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
         for c in filtered:
-            
-   
 
             #Draws and outline around the contour, green
             cv2.drawContours(objects, [c], -1, (0,255,0), 3)
@@ -87,17 +90,14 @@ def videoStream():
 
             #Centriods
             cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
+
+
             #Area and Perimter
-
-           
-
             area = cv2.contourArea(c)
-
             perimeter = cv2.arcLength(c, True)
-
             print("(X,Y): ", cx, cy, "Permeter:", format(perimeter, '.2f'), "Area:", area)
 
-
+            #i2C - String Creation
             i2cString = "(X,Y): " + str(cx) + ", " + str(cy) + " Permeter: " + str(format(perimeter, '.2f')) + " Area:" + str(area)
             i2cData = list(i2cString)
 
