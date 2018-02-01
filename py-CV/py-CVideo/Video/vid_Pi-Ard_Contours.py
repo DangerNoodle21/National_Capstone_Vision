@@ -101,9 +101,7 @@ def videoStream():
 
             i2cString = "(X,Y): " + str(cx) + ", " + str(cy) + " Permeter: " + str(format(perimeter, '.2f')) + " Area:" + str(area)
             i2cData = list(i2cString)
-            print(i2cString)
 
-            
             for i in i2cData:
                 write_I2C(int(ord(i)))
                 time.sleep(.001)
