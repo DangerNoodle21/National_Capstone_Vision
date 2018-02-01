@@ -104,10 +104,10 @@ def videoStream():
 
             for i in i2cData:
                 write_I2C(int(ord(i)))
-                time.sleep(.01)
+                time.sleep(.1)
             write_I2C(int(0x0A))
 
-        #cv2.imshow("Video", canny_video)
+        cv2.imshow("Video", canny_video)
         cv2.imshow("Objects", objects)
 
 
