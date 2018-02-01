@@ -111,7 +111,7 @@ def videoStream():
 
         #cv2.imshow("Video", canny_video)
         cv2.imshow("Objects", objects)
-        cv2.resize(object, (0,0), fx=.5, fy=.5)
+
 
     
 
