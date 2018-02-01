@@ -109,8 +109,10 @@ def videoStream():
                 time.sleep(.001)
             write_I2C(int(0x0A))
 
-        cv2.imshow("Video", canny_video)
+        #cv2.imshow("Video", canny_video)
         cv2.imshow("Objects", objects)
+        cv2.resize(object, (0,0), fx=.5, fy=.5)
+
     
 
 
