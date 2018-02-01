@@ -6,11 +6,11 @@
 #GPIO3 -> SCL
 
 #Import the Library Requreid 
-import smbus
+import smbus2
 import time
 
 # for RPI version 1, use "bus = smbus.SMBus(0)"
-bus = smbus.SMBus(1)
+bus = smbus2.SMBus(1)
 
 # This is the address we setup in the Arduino Program
 #Slave Address 1
@@ -28,7 +28,7 @@ def readNumber():
     
 while True:
 	#Receives the data from the User
-    data = raw_input("Enter the data to be sent : ")
+    data = input("Enter the data to be sent : ")
     data_list = list(data)
     for i in data_list:
     	#Sends to the Slaves 
