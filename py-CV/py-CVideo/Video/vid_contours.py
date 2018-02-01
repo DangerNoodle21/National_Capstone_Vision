@@ -36,11 +36,12 @@ def videoStream():
         #Pulls image from stream
         ret, video_stream = video_cap.read()
 
-        #hsv_frame = cv2.cvtColor(video_stream, cv2.COLOR_BGR2HSV)
+        hsv_frame = cv2.cvtColor(video_stream, cv2.COLOR_BGR2HSV)
 
-        #hsv_mask = cv2.inRange(hsv_frame, lower_white, upper_white)
+        hsv_mask = cv2.inRange(hsv_frame, lower_white, upper_white)
+        cv2.imshow("HSV"hsv_mask)
 
-        #blur_mask = cv2.GaussianBlur(hsv_mask, (3,3),0)
+        blur_mask = cv2.GaussianBlur(hsv_mask, (3,3),0)
 
         canny_video = cv2.Canny(video_stream, 50, 200, None, 3)
 
@@ -92,10 +93,10 @@ def videoStream():
 
             print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area, "Apsect Ratio:",)
     
-        cv2.imshow("Video", canny_video)
+        #cv2.imshow("Video", canny_video)
 
 
-        cv2.imshow("Objects", objects)
+        #cv2.imshow("Objects", objects)
     
 
 
