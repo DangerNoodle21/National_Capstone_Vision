@@ -99,9 +99,14 @@ def videoStream():
             i2cString = "(X,Y): " + str(cx) + ", " + str(cy) + " Permeter: " + str(format(perimeter, '.2f')) + " Area:" + str(area)
             i2cData = list(i2cString)
 
-            for i in i2cData:
-                write_I2C(int(ord(i)))
-            write_I2C(int(0x0A))
+
+            try:
+                for i in i2cData:
+                    write_I2C(int(ord(i)))
+                write_I2C(int(0x0A))
+                break
+            except IOError:
+                print("IO-Error")
 
         cv2.imshow("Video", canny_video)
         cv2.imshow("Objects", objects)
