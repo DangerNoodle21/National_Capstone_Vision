@@ -16,38 +16,32 @@ Press 'q' to quit
 
 import cv2
 import numpy as np
-import math
-import sys
 
+selection = input("Integrated Cam = 0, Usb = 1: ")
+if selection == 0:
+    mode = 0
+elif selection == 1:
+    mode = 1
+else:
+    mode = 0
 
 #Starts Video Stream, Number is the Video Scource
-video_cap = cv2.VideoCapture(0)
+video_cap = cv2.VideoCapture(mode)
 
 
 #Funtion to start Video While Loop
-def videoStream():
+def videoStream(mode):
+
+    
 
     while(True):
         #Pulls image from stream
         ret, video_stream = video_cap.read()
 
-        cv2.imwrite('video_stream.png', video_stream)
-        print("Picture Taken and Saved.")
+        video_stream_gray = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
 
 
-        lower_white = np.array([0,0,167])
-        upper_white = np.array([180,255,255])
-
-
-        #read image from file, finds out height and width
-        video_stream_png = cv2.imread('video_stream.png', 1)
-
-        #Converts picture_1 to HSV image, Hue saturation
-        hsv_frame = cv2.cvtColor(video_stream_png, cv2.COLOR_BGR2HSV)
-
-        hsv_mask = cv2.inRange(hsv_frame, lower_white, upper_white)
-
-        blur_mask = cv2.GaussianBlur(hsv_mask, (3,3),0)
+        blur_mask = cv2.GaussianBlur(video_stream_gray, (3,3),0)
 
         canny_video = cv2.Canny(video_stream, 50, 200, None, 3)
 
@@ -61,15 +55,16 @@ def videoStream():
         upper = 0.1
         lower = 0.08
 
-
+        c_num =0
         #For loop for filtering out contours based on pixel Area
         for c in contours:
-            M = cv2.moments(c)
-            x,y,w,h = cv2.boundingRect(c)
-            aspect_ratio = float(w)/h
-            if aspect_ratio > 1.39:
+            rect = cv2.minAreaRect(c)
+            width_filter, height_filter = rect[1]
+            if height_filter == 0:
                 continue
-            elif aspect_ratio < 1.36:
+            elif width_filter/height_filter > 1.41:
+                continue
+            elif width_filter/height_filter < 1.40:
                 continue
             else:
                 filtered.append(c)
@@ -93,17 +88,31 @@ def videoStream():
 
             #Centriods
             cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
-            #Area and Perimter
-            #area = cv2.contourArea(c)
-            #perimeter = cv2.arcLength(c, True)
+            
+            c_num = c_num + 1
 
-            x,y,w,h = cv2.boundingRect(c)
-            a_r = float(w)/h
+            rect = cv2.minAreaRect(c)
+            box = cv2.boxPoints(rect)
+            box = np.int0(box)
+            cv2.drawContours(video_stream,[box],0,(0,0,255),2)
+            width, height = rect[1]
 
-            cv2.rectangle(video_stream,(x,y),(x+w,y+h),(0,255,0),2)
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            text = str(c_num)
 
+            cv2.putText(video_stream, text, (cx, cy), font, 1, (0,255,0), 1, cv2.LINE_AA)
 
-            print(a_r)
+            #Using Focal Distance at know distance of 33'
+
+            # Focal lenght = (Pixel Width x Distance) / Width
+            # FL = (57.9 x 33') / 3' = 639.9
+
+            # Distance = (Width x Focal Lenght) / Pixel Width
+
+           
+            distance = (3*639.9) / width
+            
+            print(c_num, width/height, "Distance:", distance)
 
 
         cv2.imshow("Video", video_stream)
@@ -123,7 +132,9 @@ def endVideo():
 
 #Main Function
 def main():
-    videoStream()
+   
+
+    videoStream(mode)
     endVideo()
 
 #If Statement to call main function

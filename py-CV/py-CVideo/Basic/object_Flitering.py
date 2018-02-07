@@ -59,7 +59,7 @@ def keyboard():
 
     #New Object array filled with 0's
     objects = np.zeros([picture_1.shape[0],picture_1.shape[1],3], 'uint8')
-
+    c_num = 0
     img = takePic1
     for c in filtered:
 
@@ -81,22 +81,45 @@ def keyboard():
         #Centriods
         cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
 
-        x,y,w,h = cv2.boundingRect(c)
-        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+        
+        c_num = c_num + 1
+
+        rect = cv2.minAreaRect(c)
+        box = cv2.boxPoints(rect)
+        box = np.int0(box)
+        cv2.drawContours(img,[box],0,(0,0,255),2)
+
+        font = cv2.FONT_HERSHEY_SIMPLEX
+
+        width, height = rect[1]
+
+        print(width/height)
+        print(width, height)
+
+        text = str(c_num)
+
+        cv2.putText(img, text, (cx, cy), font, 1, (0,255,0), 1, cv2.LINE_AA)
+
+        #Using Focal Distance at know distance of 33'
+
+        # Focal lenght = (Pixel Width x Distance) / Width
+        # FL = (57.9 x 33') / 3' = 639.9
+
+        # Distance = (Width x Focal Lenght) / Pixel Width
+
+        distance = (3*639.9) / width
+
+        #x,y,w,h = cv2.boundingRect(c)
+        #cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+        #aspect_ratio = float(w)/h
+        #print (aspect_ratio)
+
+
         cv2.imshow("Bounding Rectangle", img)
-        aspect_ratio = float(w)/h
-
-        print (aspect_ratio)
-
         
 
-
-        #Area and Perimter
-        area = cv2.contourArea(c)
-        perimeter = cv2.arcLength(c, True)
-
         #Console Print Relavent information
-        print("(X,Y): ", cx, cy, "Area: ", area, "Perimter: ", perimeter)
+        print("Num:", c_num, "x,y:", cx, ",", cy, "Distance:", distance)
 
     #Show Outside of For loop
     
