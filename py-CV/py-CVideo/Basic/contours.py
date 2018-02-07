@@ -57,6 +57,7 @@ def keyboard():
     cv2.imshow("Contours", picture_1COPY)
 
 
+
 cv2.namedWindow("Video")
 
 

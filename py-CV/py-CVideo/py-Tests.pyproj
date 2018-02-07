@@ -5,12 +5,12 @@
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Video\vid_Pi-Ard_Contours.py</StartupFile>
+    <StartupFile>Video\vid_contours.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>py-CVideo</Name>
+    <Name>py-Tests</Name>
     <RootNamespace>py-CVideo</RootNamespace>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>

@@ -60,7 +60,7 @@ def keyboard():
     #New Object array filled with 0's
     objects = np.zeros([picture_1.shape[0],picture_1.shape[1],3], 'uint8')
 
-
+    img = takePic1
     for c in filtered:
 
         #Random Color
@@ -81,6 +81,16 @@ def keyboard():
         #Centriods
         cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
 
+        x,y,w,h = cv2.boundingRect(c)
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+        cv2.imshow("Bounding Rectangle", img)
+        aspect_ratio = float(w)/h
+
+        print (aspect_ratio)
+
+        
+
+
         #Area and Perimter
         area = cv2.contourArea(c)
         perimeter = cv2.arcLength(c, True)
@@ -89,7 +99,9 @@ def keyboard():
         print("(X,Y): ", cx, cy, "Area: ", area, "Perimter: ", perimeter)
 
     #Show Outside of For loop
+    
     cv2.imshow("Contours_Filtering",objects)
+    
 
 
 

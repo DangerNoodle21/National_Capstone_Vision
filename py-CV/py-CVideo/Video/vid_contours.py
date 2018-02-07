@@ -64,13 +64,12 @@ def videoStream():
 
         #For loop for filtering out contours based on pixel Area
         for c in contours:
-            if cv2.contourArea(c) == 0:
+            M = cv2.moments(c)
+            x,y,w,h = cv2.boundingRect(c)
+            aspect_ratio = float(w)/h
+            if aspect_ratio > 1.39:
                 continue
-            elif (cv2.arcLength(c, True) / cv2.contourArea(c)) > upper:
-                testratio1 = (cv2.arcLength(c, True) / cv2.contourArea(c))
-                continue
-            elif (cv2.arcLength(c, True) / cv2.contourArea(c)) < lower:
-                testratio2 = (cv2.arcLength(c, True) / cv2.contourArea(c))
+            elif aspect_ratio < 1.36:
                 continue
             else:
                 filtered.append(c)
@@ -78,6 +77,7 @@ def videoStream():
 
         objects = np.zeros([canny_video.shape[0], canny_video.shape[1],3], 'uint8')
 
+        
         #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
         for c in filtered:
 
@@ -94,18 +94,19 @@ def videoStream():
             #Centriods
             cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
             #Area and Perimter
-            area = cv2.contourArea(c)
-            perimeter = cv2.arcLength(c, True)
+            #area = cv2.contourArea(c)
+            #perimeter = cv2.arcLength(c, True)
 
-            print("(X,Y): ", cx, cy, "Permeter:", perimeter, "Area:", area, "Apsect Ratio:",)
+            x,y,w,h = cv2.boundingRect(c)
+            a_r = float(w)/h
 
-        cv2.imshow("Video", canny_video)
-
-
-        cv2.imshow("Objects", objects)
+            cv2.rectangle(video_stream,(x,y),(x+w,y+h),(0,255,0),2)
 
 
+            print(a_r)
 
+
+        cv2.imshow("Video", video_stream)
         #Picture / Break if statement
         ch2 = cv2.waitKey(1)
         if ch2 & 0xFf == ord('q'):
