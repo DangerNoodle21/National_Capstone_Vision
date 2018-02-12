@@ -17,20 +17,14 @@ Press 'q' to quit
 import cv2
 import numpy as np
 
-selection = input("Integrated Cam = 0, Usb = 1: ")
-if selection == 0:
-    mode = 0
-elif selection == 1:
-    mode = 1
-else:
-    mode = 0
+
 
 #Starts Video Stream, Number is the Video Scource
-video_cap = cv2.VideoCapture(mode)
+video_cap = cv2.VideoCapture(1)
 
 
 #Funtion to start Video While Loop
-def videoStream(mode):
+def videoStream():
 
     
 
@@ -134,7 +128,7 @@ def endVideo():
 def main():
    
 
-    videoStream(mode)
+    videoStream()
     endVideo()
 
 #If Statement to call main function

@@ -29,10 +29,9 @@ void setup()
 
 	Serial.begin(9600);
 	Wire.begin(i2c_ADDRESS);
-	// define callbacks for i2c communication
+
 	Wire.onReceive(receiveData);
-	//  Wire.onRequest(sendData);
-}
+
 
 void loop()
 {

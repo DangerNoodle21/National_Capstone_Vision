@@ -22,14 +22,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="classes\CV.py" />
+    <Compile Include="classes\UI.py" />
+    <Compile Include="classes\__init__.py" />
     <Compile Include="CV_Build.py" />
-    <Compile Include="VideoCap\capture.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="VideoCap\" />
+    <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\CV-Build\classes\" />
+    <Folder Include="classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -5,7 +5,7 @@
     <ProjectGuid>ed70a7f9-513c-4cdc-8833-86281f5f9132</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Video\vid_contours.py</StartupFile>
+    <StartupFile>Basic\simple_thresh.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,7 +26,13 @@
     <Compile Include="Basic\canny_edges.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\console_output.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\contours.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\curses_example.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\object_Flitering.py">
