@@ -5,38 +5,70 @@ import curses
 
 class computerVision(object):
 
-    
+    #To find if array is empty or not
     def Enquiry(lis1):
         if len(lis1) == 0:
             return False
         else:
             return True
 
+
+    def cusreBoxCreator():
+
+        curses.start_color(); curses.curs_set(False);
+
+        #User Information Box Settings
+        userBox_x_height = 5; userBox_width = 10; userBox_y = 0;  userBox_x = 0; 
+
+        #Distance Dispaly boxes Settings
+        disWin_height = 5; disWin_width = 10; disWin_y = 0;  disWin_x = 12; 
+
+        #Curses Window Creation [curses.newwin(nlines, ncols, begin_y, begin_x)]
+        idWindow_1 = curses.newwin(userBox_x_height, userBox_width, userBox_y, userBox_x); idWindow_1.box(0,0); 
+        idWindow_2 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 6, userBox_x); idWindow_2.box(0,0); 
+        idWindow_3 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 12, userBox_x); idWindow_3.box(0,0);
+
+        #idWindow_1.wmove(userBox_y + 2, userBox_x + 2)
+        idWindow_1.addstr("USB CAM")
+        idWindow_1.refresh()
+
+        #idWindow_2.wmove(userBox_y + 8, userBox_x + 2)
+        idWindow_2.addstr("TARGET SQUARE")
+        idWindow_2.refresh()
+
+        #idWindow_3.wmove(userBox_y + 14, userBox_x + 2)
+        idWindow_3.addstr("CONSOLE")
+        idWindow_3.refresh()
+
+
+
+        
+        dis_Window_title = curses.newwin(disWin_height, disWin_width, disWin_y, disWin_x); dis_Window_title.box(0,0); 
+        dis_Window_info = curses.newwin(disWin_height + 10, disWin_width, disWin_y + 6, disWin_x); dis_Window_info.box(0,0); 
+    
+        
+        #dis_Window_title.wmove(disWin_y + 2, disWin_x + 2)
+        dis_Window_title.addstr("NOT FOUND")
+        dis_Window_title.refresh()
+        dis_Window_info.refresh()
+        
+        
+        return {'idWindow_1': idWindow_1, 'idWindow_2':idWindow_2, 'idWindow_3':idWindow_3, 
+                'dis_Window_title':dis_Window_title, 'dis_Window_info':dis_Window_info}
+
+
     def vid_stream(stdscr, userChoice):
 
-        
-        begin_x = 24; begin_y = 10
-        height = 5; width = 10
-
-        #Starts Video Stream From User Choice
-        
-
-        #Creating Title and Distance Distplay boxes
-        curses.start_color(); curses.curs_set(False);
-        idWindow = curses.newwin(height, width, begin_y, begin_x)
-        idWindow.box(0,0); 
-        idWindow.addstr("Not FOUND")
 
 
 
+        boxes = computerVision.cusreBoxCreator()
+     
 
         stream = cv2.VideoCapture(0)
         
         while(True):
 
-
-            
-            
             #Array for storing flitered Contours / console array to send to console output
             filtered = []
             console_Array = []
@@ -114,13 +146,16 @@ class computerVision(object):
             cv2.imshow("Video", video_stream)
 
             if computerVision.Enquiry(console_Array):
-                idWindow.erase()
-                idWindow.addstr("Found")
-                idWindow.refresh()
+                boxes['dis_Window_title'].erase()
+    
+                boxes['dis_Window_title'].addstr("Found")
+                boxes['dis_Window_title'].box(0,0); 
+                boxes['dis_Window_title'].refresh()
             else:
-                idWindow.erase()
-                idWindow.addstr("Not Found")
-                idWindow.refresh()
+                boxes['dis_Window_title'].erase()
+                boxes['dis_Window_title'].box(0,0); 
+                boxes['dis_Window_title'].addstr("Not Found")
+                boxes['dis_Window_title'].refresh()
 
             #Picture / Break if statement
             ch2 = cv2.waitKey(1)

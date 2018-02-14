@@ -6,7 +6,8 @@ from curses import wrapper
 cameraChoice = 0
 
 def main():
-    cameraChoice = userInteraction.askCapture()
+    #cameraChoice = userInteraction.askCapture()
+    cameraChoice = 0
     wrapper(computerVision.vid_stream, cameraChoice)
 
 
