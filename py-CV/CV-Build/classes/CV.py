@@ -15,7 +15,7 @@ class computerVision(object):
 
     def cusreBoxCreator():
 
-        curses.start_color(); curses.curs_set(False);
+        curses.start_color(); curses.curs_set(0);
 
         #User Information Box Settings
         userBox_x_height = 5; userBox_width = 10; userBox_y = 0;  userBox_x = 0; 
@@ -24,21 +24,21 @@ class computerVision(object):
         disWin_height = 5; disWin_width = 10; disWin_y = 0;  disWin_x = 12; 
 
         #Curses Window Creation [curses.newwin(nlines, ncols, begin_y, begin_x)]
-        idWindow_1 = curses.newwin(userBox_x_height, userBox_width, userBox_y, userBox_x); idWindow_1.box(0,0); 
-        idWindow_2 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 6, userBox_x); idWindow_2.box(0,0); 
-        idWindow_3 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 12, userBox_x); idWindow_3.box(0,0);
+        userWindow_1 = curses.newwin(userBox_x_height, userBox_width, userBox_y, userBox_x); userWindow_1.box(0,0); 
+        userWindow_2 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 6, userBox_x); userWindow_2.box(0,0); 
+        userWindow_3 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 12, userBox_x); userWindow_3.box(0,0);
 
         #idWindow_1.wmove(userBox_y + 2, userBox_x + 2)
-        idWindow_1.addstr("USB CAM")
-        idWindow_1.refresh()
+        userWindow_1.addstr(2, 2, "USB CAM")
+        userWindow_1.refresh()
 
         #idWindow_2.wmove(userBox_y + 8, userBox_x + 2)
-        idWindow_2.addstr("TARGET SQUARE")
-        idWindow_2.refresh()
+        userWindow_2.addstr(2, 2, "TARGET SQUARE")
+        userWindow_2.refresh()
 
         #idWindow_3.wmove(userBox_y + 14, userBox_x + 2)
-        idWindow_3.addstr("CONSOLE")
-        idWindow_3.refresh()
+        userWindow_3.addstr(2, 2, "CONSOLE")
+        userWindow_3.refresh()
 
 
 
@@ -53,7 +53,7 @@ class computerVision(object):
         dis_Window_info.refresh()
         
         
-        return {'idWindow_1': idWindow_1, 'idWindow_2':idWindow_2, 'idWindow_3':idWindow_3, 
+        return {'idWindow_1': userWindow_1, 'idWindow_2':userWindow_2, 'idWindow_3':userWindow_3, 
                 'dis_Window_title':dis_Window_title, 'dis_Window_info':dis_Window_info}
 
 
