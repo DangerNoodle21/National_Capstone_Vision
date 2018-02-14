@@ -15,28 +15,27 @@ class computerVision(object):
 
     def cusreBoxCreator():
 
-        curses.start_color(); curses.curs_set(0);
+        
 
         #User Information Box Settings
-        userBox_x_height = 5; userBox_width = 10; userBox_y = 0;  userBox_x = 0; 
+        userBox_x_height = 5; userBox_width = 20; userBox_y = 0;  userBox_x = 0; 
 
         #Distance Dispaly boxes Settings
-        disWin_height = 5; disWin_width = 10; disWin_y = 0;  disWin_x = 12; 
+        disWin_height = 5; disWin_width = 20; disWin_y = 0;  disWin_x = userBox_width + 2; 
 
         #Curses Window Creation [curses.newwin(nlines, ncols, begin_y, begin_x)]
         userWindow_1 = curses.newwin(userBox_x_height, userBox_width, userBox_y, userBox_x); userWindow_1.box(0,0); 
         userWindow_2 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 6, userBox_x); userWindow_2.box(0,0); 
         userWindow_3 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 12, userBox_x); userWindow_3.box(0,0);
 
-        #idWindow_1.wmove(userBox_y + 2, userBox_x + 2)
-        userWindow_1.addstr(2, 2, "USB CAM")
+        userWindow_1.addstr(2, 2, "USB CAM", curses.COLOR_RED)
         userWindow_1.refresh()
 
-        #idWindow_2.wmove(userBox_y + 8, userBox_x + 2)
+
         userWindow_2.addstr(2, 2, "TARGET SQUARE")
         userWindow_2.refresh()
 
-        #idWindow_3.wmove(userBox_y + 14, userBox_x + 2)
+
         userWindow_3.addstr(2, 2, "CONSOLE")
         userWindow_3.refresh()
 
@@ -46,9 +45,7 @@ class computerVision(object):
         dis_Window_title = curses.newwin(disWin_height, disWin_width, disWin_y, disWin_x); dis_Window_title.box(0,0); 
         dis_Window_info = curses.newwin(disWin_height + 10, disWin_width, disWin_y + 6, disWin_x); dis_Window_info.box(0,0); 
     
-        
-        #dis_Window_title.wmove(disWin_y + 2, disWin_x + 2)
-        dis_Window_title.addstr("NOT FOUND")
+        dis_Window_title.addstr(2,2,"NOT FOUND")
         dis_Window_title.refresh()
         dis_Window_info.refresh()
         
@@ -58,9 +55,8 @@ class computerVision(object):
 
 
     def vid_stream(stdscr, userChoice):
-
-
-
+        stdscr = curses.initscr()
+        curses.start_color(); curses.curs_set(0);
 
         boxes = computerVision.cusreBoxCreator()
      
@@ -148,13 +144,13 @@ class computerVision(object):
             if computerVision.Enquiry(console_Array):
                 boxes['dis_Window_title'].erase()
     
-                boxes['dis_Window_title'].addstr("Found")
+                boxes['dis_Window_title'].addstr(2,2,"Found")
                 boxes['dis_Window_title'].box(0,0); 
                 boxes['dis_Window_title'].refresh()
             else:
                 boxes['dis_Window_title'].erase()
                 boxes['dis_Window_title'].box(0,0); 
-                boxes['dis_Window_title'].addstr("Not Found")
+                boxes['dis_Window_title'].addstr(2,2,"Not Found")
                 boxes['dis_Window_title'].refresh()
 
             #Picture / Break if statement
