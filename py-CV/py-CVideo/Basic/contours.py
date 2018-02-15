@@ -22,7 +22,7 @@ import cv2
 import numpy as np
 
 
-cap = cv2.VideoCapture(0) # Video Scource
+cap = cv2.VideoCapture(1) # Video Scource
 
 def keyboard():
 

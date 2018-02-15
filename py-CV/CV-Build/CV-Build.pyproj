@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>CV-Build</Name>
     <RootNamespace>CV-Build</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,10 +28,9 @@
     <Compile Include="CV_Build.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6" />
+    <InterpreterReference Include="Global|PythonCore|3.6-32" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\CV-Build\classes\" />
     <Folder Include="classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

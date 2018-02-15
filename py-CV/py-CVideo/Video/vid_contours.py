@@ -70,10 +70,7 @@ def videoStream():
         #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
         for c in filtered:
 
-            #Draws and outline around the contour, green
-            cv2.drawContours(objects, [c], -1, (0,255,0), 3)
-
-
+ 
             #Centriod
             # Had to add +1 to advoid Dividion by Zero erro
             M = cv2.moments(c)

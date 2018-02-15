@@ -12,7 +12,7 @@
     <OutputPath>.</OutputPath>
     <Name>py-Tests</Name>
     <RootNamespace>py-CVideo</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +51,7 @@
     <Compile Include="Video\rpi_test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Video\vid_Adaptive - Copy.py" />
     <Compile Include="Video\vid_Adaptive.py" />
     <Compile Include="Video\vid_contours.py" />
     <Compile Include="Video\vid_Houghs.py" />
@@ -67,7 +68,7 @@
     <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6" />
+    <InterpreterReference Include="Global|PythonCore|3.6-32" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

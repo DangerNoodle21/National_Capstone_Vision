@@ -13,6 +13,52 @@ class computerVision(object):
             return True
 
 
+    def cubeProfile(stream):
+        while(1):
+            _, frame = stream.read()
+            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    
+            lower_yellow = np.array([24,105,99])
+            upper_yellow = np.array([148,216,246])
+    
+            mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
+          
+            cube_canny = cv2.Canny(mask, 50, 200, None, 3)
+            _, contours, hierarchy = cv2.findContours(cube_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+            con_unFiltered = len(contours)
+
+            cv2.imshow("Test", cube_canny)
+            k = cv2.waitKey(5) & 0xFF
+            if k == 27:
+                break
+
+   
+    def targetSquareProfile(stream):
+
+        # Converts to gray scale / Adds Blur / Converst to CannyEdge Detection
+        video_stream_gray = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
+        video_stream_gray = cv2.GaussianBlur(video_stream_gray, (3,3),0)
+        video_stream_gray = cv2.Canny(video_stream_gray, 50, 200, None, 3)
+
+
+        #Finds the Contours in frame taken, then prints the amount it finds
+        _, contours, hierarchy = cv2.findContours(video_stream_gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        con_unFiltered = len(contours)
+
+        #For loop for filtering out contours based on pixel Area
+        for c in contours:
+            rect = cv2.minAreaRect(c)
+            width_filter, height_filter = rect[1]
+            if height_filter == 0:
+                continue
+            elif width_filter/height_filter > 1.41:
+                continue
+            elif width_filter/height_filter < 1.40:
+                continue
+            else:
+                filtered.append(c)
+
+
     def cusreBoxCreator():
 
         
@@ -61,7 +107,7 @@ class computerVision(object):
         boxes = computerVision.cusreBoxCreator()
      
 
-        stream = cv2.VideoCapture(0)
+        stream = cv2.VideoCapture(1)
         
         while(True):
 
@@ -72,31 +118,7 @@ class computerVision(object):
             #Contour Number for Identifaction
             c_num = 0
 
-            #Pulls image from stream
-            ret, video_stream = stream.read()
-
-            # Converts to gray scale / Adds Blur / Converst to CannyEdge Detection
-            video_stream_gray = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
-            video_stream_gray = cv2.GaussianBlur(video_stream_gray, (3,3),0)
-            video_stream_gray = cv2.Canny(video_stream_gray, 50, 200, None, 3)
-
-
-            #Finds the Contours in frame taken, then prints the amount it finds
-            _, contours, hierarchy = cv2.findContours(video_stream_gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-            con_unFiltered = len(contours)
-
-            #For loop for filtering out contours based on pixel Area
-            for c in contours:
-                rect = cv2.minAreaRect(c)
-                width_filter, height_filter = rect[1]
-                if height_filter == 0:
-                    continue
-                elif width_filter/height_filter > 1.41:
-                    continue
-                elif width_filter/height_filter < 1.40:
-                    continue
-                else:
-                    filtered.append(c)
+            computerVision.cubeProfile(stream)
 
             #Number of Filtered Contours
             con_filtered = len(filtered)

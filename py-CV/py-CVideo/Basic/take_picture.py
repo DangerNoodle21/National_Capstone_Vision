@@ -19,7 +19,7 @@ import cv2
 import numpy as np
 
 
-cap = cv2.VideoCapture(0) # Video Camera Scource - 0
+cap = cv2.VideoCapture(1) # Video Camera Scource - 0
 
 
 #Keyboard Function
@@ -61,6 +61,7 @@ def keyboard():
     text_y = int (picture_1.shape[1] / 2)
     cv2.putText(picture_1, 'ADD TEXT', (text_x, text_y), font, 1, (0,255,0), 4, cv2.LINE_AA)
     cv2.imshow("Picture_1", picture_1)
+    cv2.imwrite("Picture.png", picture_1)
 
 #Circle Parameters for click function
 color = (0,255,0)
