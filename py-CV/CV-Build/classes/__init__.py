@@ -1,2 +1,2 @@
 from .CV import computerVision
-from .UI import userInteraction
+from .UI import userInterface

@@ -2,15 +2,11 @@ from classes import *
 from curses import wrapper
 
 
-#globe viables
-cameraChoice = 0
-
 def main():
-    #cameraChoice = userInteraction.askCapture()
-    cameraChoice = 0
-    wrapper(computerVision.vid_stream, cameraChoice)
+    wrapper(userInterface.draw_menu)
 
 
+    wrapper(computerVision.comp_vision_start)
 
 
 #If Statement to call main function

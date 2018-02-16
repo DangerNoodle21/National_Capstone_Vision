@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
-import terminaltables
 import curses
+from classes import UI
 
 class computerVision(object):
 
@@ -11,31 +11,37 @@ class computerVision(object):
             return False
         else:
             return True
+    #Computer Vision Profile for Power-Cube
+    def cubeProfile(stream, filtered_contours):
+        ret, cubeStream  = stream.read()
 
-
-    def cubeProfile(stream):
-        while(1):
-            _, frame = stream.read()
-            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        cube_blur  = cv2.GaussianBlur(cubeStream, (3,3),0)
     
-            lower_yellow = np.array([24,105,99])
-            upper_yellow = np.array([148,216,246])
+        hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
     
-            mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
+        lower_yellow = np.array([21,39,119])
+        upper_yellow = np.array([180,255,255])
+    
+        mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
           
-            cube_canny = cv2.Canny(mask, 50, 200, None, 3)
-            _, contours, hierarchy = cv2.findContours(cube_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-            con_unFiltered = len(contours)
+        cube_canny = cv2.Canny(mask, 50, 200, None, 3)
+ 
+          
+        _, contours, hierarchy = cv2.findContours(cube_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        for c in contours:
+            if cv2.contourArea(c) < 100:
+                continue
+            elif cv2.contourArea(c) > 30000:
+                continue
+            else:
+                filtered_contours.append(c)
 
-            cv2.imshow("Test", cube_canny)
-            k = cv2.waitKey(5) & 0xFF
-            if k == 27:
-                break
+        return filtered_contours
 
-   
-    def targetSquareProfile(stream):
+    #Computer Vision Profile for Practice Targeting Square   
+    def targetSquareProfile(stream, filtered_contours):
 
-        # Converts to gray scale / Adds Blur / Converst to CannyEdge Detection
+        # Converts to gray scale / Adds Blur / Converts to CannyEdge Detection
         video_stream_gray = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
         video_stream_gray = cv2.GaussianBlur(video_stream_gray, (3,3),0)
         video_stream_gray = cv2.Canny(video_stream_gray, 50, 200, None, 3)
@@ -58,74 +64,38 @@ class computerVision(object):
             else:
                 filtered.append(c)
 
-
-    def cusreBoxCreator():
-
-        
-
-        #User Information Box Settings
-        userBox_x_height = 5; userBox_width = 20; userBox_y = 0;  userBox_x = 0; 
-
-        #Distance Dispaly boxes Settings
-        disWin_height = 5; disWin_width = 20; disWin_y = 0;  disWin_x = userBox_width + 2; 
-
-        #Curses Window Creation [curses.newwin(nlines, ncols, begin_y, begin_x)]
-        userWindow_1 = curses.newwin(userBox_x_height, userBox_width, userBox_y, userBox_x); userWindow_1.box(0,0); 
-        userWindow_2 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 6, userBox_x); userWindow_2.box(0,0); 
-        userWindow_3 = curses.newwin(userBox_x_height, userBox_width, userBox_y + 12, userBox_x); userWindow_3.box(0,0);
-
-        userWindow_1.addstr(2, 2, "USB CAM", curses.COLOR_RED)
-        userWindow_1.refresh()
-
-
-        userWindow_2.addstr(2, 2, "TARGET SQUARE")
-        userWindow_2.refresh()
-
-
-        userWindow_3.addstr(2, 2, "CONSOLE")
-        userWindow_3.refresh()
-
-
-
-        
-        dis_Window_title = curses.newwin(disWin_height, disWin_width, disWin_y, disWin_x); dis_Window_title.box(0,0); 
-        dis_Window_info = curses.newwin(disWin_height + 10, disWin_width, disWin_y + 6, disWin_x); dis_Window_info.box(0,0); 
+        return filtered
     
-        dis_Window_title.addstr(2,2,"NOT FOUND")
-        dis_Window_title.refresh()
-        dis_Window_info.refresh()
-        
-        
-        return {'idWindow_1': userWindow_1, 'idWindow_2':userWindow_2, 'idWindow_3':userWindow_3, 
-                'dis_Window_title':dis_Window_title, 'dis_Window_info':dis_Window_info}
+    #Main Computer Vision Program
+    def comp_vision_start(stdscr):
 
 
-    def vid_stream(stdscr, userChoice):
-        stdscr = curses.initscr()
+        #Curses Display - Options
         curses.start_color(); curses.curs_set(0);
+        
+        #Creating console out boxes from UI
+        consoleBoxes = UI.userInterface.outputBoxCreator(stdscr);
 
-        boxes = computerVision.cusreBoxCreator()
-     
 
-        stream = cv2.VideoCapture(1)
+        stream = cv2.VideoCapture(0)
         
         while(True):
 
-            #Array for storing flitered Contours / console array to send to console output
-            filtered = []
+            #Array for storing filtered Contours / console array to send to console output
+            filtered_contours = []
             console_Array = []
 
-            #Contour Number for Identifaction
+            #Contour Number for Identification
             c_num = 0
 
-            computerVision.cubeProfile(stream)
-
+            filtered_contours = computerVision.cubeProfile(stream, filtered_contours)
+          
             #Number of Filtered Contours
             con_filtered = len(filtered)
             #Array for drawing contours
             objects = np.zeros([video_stream.shape[0], video_stream.shape[1],3], 'uint8')
 
-            #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
+            #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
             for c in filtered:
 
                 #Contour Number
@@ -133,13 +103,13 @@ class computerVision(object):
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 text = str(c_num)
 
-                #Centriod
-                # Had to add +1 to advoid Dividion by Zero erro
+                #Centroid
+                # Had to add +1 to avoid Division by Zero error
                 M = cv2.moments(c)
                 cx = int( M['m10']/(M['m00'] + 1))
                 cy = int( M['m01']/(M['m00'] + 1))
 
-                #Centriods
+                #Centroids
                 cv2.circle(objects, (cx,cy), 4, (0, 0, 255), -1)
 
                 #Area of Found Contour
@@ -164,16 +134,9 @@ class computerVision(object):
             cv2.imshow("Video", video_stream)
 
             if computerVision.Enquiry(console_Array):
-                boxes['dis_Window_title'].erase()
-    
-                boxes['dis_Window_title'].addstr(2,2,"Found")
-                boxes['dis_Window_title'].box(0,0); 
-                boxes['dis_Window_title'].refresh()
+                UI.userInterface.object_Found(consoleBoxes)
             else:
-                boxes['dis_Window_title'].erase()
-                boxes['dis_Window_title'].box(0,0); 
-                boxes['dis_Window_title'].addstr(2,2,"Not Found")
-                boxes['dis_Window_title'].refresh()
+                UI.userInterface.object_NOT_Found(consoleBoxes)
 
             #Picture / Break if statement
             ch2 = cv2.waitKey(1)

@@ -12,7 +12,7 @@
     <OutputPath>.</OutputPath>
     <Name>py-Tests</Name>
     <RootNamespace>py-CVideo</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +36,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\object_Flitering.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\pictures_distance_test_cube.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\simple_thresh.py">
@@ -68,7 +71,10 @@
     <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6-32" />
+    <InterpreterReference Include="Global|PythonCore|3.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Basic\cube1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>CV-Build</Name>
     <RootNamespace>CV-Build</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,7 +28,7 @@
     <Compile Include="CV_Build.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6-32" />
+    <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="classes\" />
