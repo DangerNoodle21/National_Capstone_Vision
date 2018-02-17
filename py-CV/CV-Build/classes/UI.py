@@ -158,7 +158,7 @@ class userInterface(object):
 
 
         consoleBoxes['dis_Window_title'].erase()
-        nsoleBoxes['dis_Window_title'].attron(curses.color_pair(1))
+        consoleBoxes['dis_Window_title'].attron(curses.color_pair(1))
         consoleBoxes['dis_Window_title'].attron(curses.A_BOLD)
 
 

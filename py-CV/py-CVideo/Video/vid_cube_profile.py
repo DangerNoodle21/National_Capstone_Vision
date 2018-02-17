@@ -33,12 +33,12 @@ while(True):
 
     
     #Bluring the image, for easier ID, Gaussian Blur
-    takePic1 = cv2.GaussianBlur(takePic1, (3,3),0)
+    takePic1 = cv2.GaussianBlur(takePic1, (33,33),0)
     
     hsv = cv2.cvtColor(takePic1, cv2.COLOR_BGR2HSV)
     
-    lower_yellow = np.array([21,39,119])
-    upper_yellow = np.array([180,255,255])
+    lower_yellow = np.array([0,34,0])
+    upper_yellow = np.array([56,165,170])
     
     mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
           
@@ -53,7 +53,7 @@ while(True):
  
     #For loop for filtering out contours based on pixel Area
     for c in contours:
-        if cv2.contourArea(c) < 100:
+        if cv2.contourArea(c) < 50:
             continue
         elif cv2.contourArea(c) > 30000:
             continue
@@ -87,9 +87,18 @@ while(True):
         text = str(c_num)
 
         cv2.putText(takePic1, text, (cx, cy), font, 1, (0,255,0), 1, cv2.LINE_AA)
+        
+        #Using Focal Distance at know distance of 33'
+
+        # Focal lenght = (Pixel Width x Distance) / Width
+        # FL = (196 x 34in) / 13 in = 512.61
+
+        # Distance = (Width x Focal Lenght) / Pixel Width
+        distance = (13 * 512.61) / width
+
 
         #Using Focal Distance at know distance of 33'
-        print(c_num, width/height)
+        print(c_num, width, height, distance)
 
 
     cv2.imshow("Video", takePic1)

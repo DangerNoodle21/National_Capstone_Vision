@@ -13,14 +13,14 @@ class computerVision(object):
             return True
     #Computer Vision Profile for Power-Cube
     def cubeProfile(stream, filtered_contours):
-        ret, cubeStream  = stream.read()
+        
 
-        cube_blur  = cv2.GaussianBlur(cubeStream, (3,3),0)
+        cube_blur  = cv2.GaussianBlur(stream, (9,9),0)
     
         hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
     
-        lower_yellow = np.array([21,39,119])
-        upper_yellow = np.array([180,255,255])
+        lower_yellow = np.array([0,23,0])
+        upper_yellow = np.array([49,255,255])
     
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
           
@@ -73,11 +73,13 @@ class computerVision(object):
         #Curses Display - Options
         curses.start_color(); curses.curs_set(0);
         
+        
+
         #Creating console out boxes from UI
-        consoleBoxes = UI.userInterface.outputBoxCreator(stdscr);
+        consoleBoxes= UI.userInterface.outputBoxCreator(stdscr);
 
 
-        stream = cv2.VideoCapture(0)
+        stream = cv2.VideoCapture(1)
         
         while(True):
 
@@ -88,15 +90,17 @@ class computerVision(object):
             #Contour Number for Identification
             c_num = 0
 
-            filtered_contours = computerVision.cubeProfile(stream, filtered_contours)
+            ret, obj_stream  = stream.read()
+
+            filtered_contours = computerVision.cubeProfile(obj_stream, filtered_contours)
           
             #Number of Filtered Contours
-            con_filtered = len(filtered)
+            con_filtered = len(filtered_contours)
             #Array for drawing contours
-            objects = np.zeros([video_stream.shape[0], video_stream.shape[1],3], 'uint8')
+            objects = np.zeros([obj_stream.shape[0], obj_stream.shape[1],3], 'uint8')
 
             #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
-            for c in filtered:
+            for c in filtered_contours:
 
                 #Contour Number
                 c_num = c_num + 1
@@ -119,19 +123,23 @@ class computerVision(object):
                 box = np.int0(box)
 
                 #Drawing Red Box Around Contour
-                cv2.drawContours(video_stream,[box],0,(0,0,255),2)
+                cv2.drawContours(obj_stream,[box],0,(0,0,255),2)
 
 
                 #Drawing number on contour
-                cv2.putText(video_stream, text, (cx, cy), font, 1, (0,255,0), 1, cv2.LINE_AA)
+                cv2.putText(obj_stream, text, (cx, cy), font, 1, (0,255,0), 1, cv2.LINE_AA)
 
                 #Find Height / Width for Distance Calculation
                 width, height = rect[1]
+
+                print(c_num, width, height)
+
+
                 distance = (3*639.9) / width
                 #Adding Information to for console output
                 console_Array.append([c_num, width/height, distance])
                
-            cv2.imshow("Video", video_stream)
+            cv2.imshow("Video", obj_stream)
 
             if computerVision.Enquiry(console_Array):
                 UI.userInterface.object_Found(consoleBoxes)
