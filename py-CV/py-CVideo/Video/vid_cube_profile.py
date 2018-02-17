@@ -33,16 +33,16 @@ while(True):
 
     
     #Bluring the image, for easier ID, Gaussian Blur
-    takePic1 = cv2.GaussianBlur(takePic1, (33,33),0)
+    gas_blur = cv2.GaussianBlur(takePic1, (33,33),0)
     
-    hsv = cv2.cvtColor(takePic1, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(gas_blur, cv2.COLOR_BGR2HSV)
     
     lower_yellow = np.array([0,34,0])
     upper_yellow = np.array([56,165,170])
     
     mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
           
-    cube_canny = cv2.Canny(mask, 50, 200, None, 3)
+    cube_canny = cv2.Canny(mask, 50, 100, None, 3)
 
     #Finds the Contours in frame taken, then prints the amount it finds
     _, contours, hierarchy = cv2.findContours(cube_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -50,17 +50,25 @@ while(True):
 
     #Array for storing flitered Contours
     filtered = []
+
+    compare_value = 0
  
     #For loop for filtering out contours based on pixel Area
+    #Filtering with Aspect Ratio : 0.80139
     for c in contours:
-        if cv2.contourArea(c) < 50:
-            continue
-        elif cv2.contourArea(c) > 30000:
-            continue
-        else:
-            filtered.append(c)
-    print(len(filtered))
+        rect_filter = cv2.minAreaRect(c)
+        width_filter, height_filter = rect_filter[1]
+       
+        if height_filter == 0: continue
+        if (13 * 512.61) / width_filter > 1000: continue
+        elif width_filter  / height_filter >= 1: continue
+        elif width_filter  / height_filter < 0.5: continue
+        elif width_filter  / height_filter == compare_value: continue
+        else: 
+           compare_value  = width_filter/height_filter
+           filtered.append(c)
 
+    print(len(filtered))
     objects = np.zeros([takePic1.shape[0], takePic1.shape[1],3], 'uint8')
     c_num = 0
     #For Loop for Filtering Contours - C the number of filtered countours in the array Filtered[]
@@ -98,16 +106,13 @@ while(True):
 
 
         #Using Focal Distance at know distance of 33'
-        print(c_num, width, height, distance)
+        print(c_num, width/height, distance)
 
 
     cv2.imshow("Video", takePic1)
 
 
-    #cv2.imshow("Objects", objects)
-
-
-    #Picture / Break if statement
+    #Break Statement
     ch2 = cv2.waitKey(1)
     if ch2 & 0xFf == ord('q'):
         break

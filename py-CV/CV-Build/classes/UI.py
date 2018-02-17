@@ -135,26 +135,48 @@ class userInterface(object):
         return {'userWindow_1': userWindow_1, 'userWindow_2':userWindow_2, 'userWindow_3':userWindow_3, 
                 'dis_Window_title':dis_Window_title, 'dis_Window_info':dis_Window_info}
 
-    def object_Found(consoleBoxes):
+    def object_Found(consoleBoxes, console_Array):
 
-        consoleBoxes['dis_Window_title'].erase()
-
-        curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
         
 
+        curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+        
+        consoleBoxes['dis_Window_title'].erase()
         consoleBoxes['dis_Window_title'].attron(curses.color_pair(1))
         consoleBoxes['dis_Window_title'].attron(curses.A_BOLD)
-
-
-       
         consoleBoxes['dis_Window_title'].addstr(2,2,"OBJ. DETECTED")
-        consoleBoxes['dis_Window_title'].box(0,0); 
+        consoleBoxes['dis_Window_title'].box(0,0)
         consoleBoxes['dis_Window_title'].refresh()
+
+        consoleBoxes['dis_Window_info'].erase()
+        consoleBoxes['dis_Window_info'].attron(curses.color_pair(1))
+        consoleBoxes['dis_Window_info'].attron(curses.A_BOLD)
+        consoleBoxes['dis_Window_info'].box(0,0)
+        
+        
+        for x in console_Array:
+            if console_Array[x] >= 5: break
+            cnum, dist = console_Array[x]
+            consoleBoxes['dis_Window_info'].addstr(x + 2, 2,num)
+            consoleBoxes['dis_Window_info'].addstr(x + 2, 4,dis)
+
+
+
+        
+        
+        consoleBoxes['dis_Window_info'].refresh()
+
+      
+
+
+
+
+
 
     def object_NOT_Found(consoleBoxes):
 
 
-        curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
+        curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
 
 
         consoleBoxes['dis_Window_title'].erase()

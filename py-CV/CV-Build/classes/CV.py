@@ -15,12 +15,12 @@ class computerVision(object):
     def cubeProfile(stream, filtered_contours):
         
 
-        cube_blur  = cv2.GaussianBlur(stream, (9,9),0)
+        cube_blur  = cv2.GaussianBlur(stream, (33,33),0)
     
         hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
     
-        lower_yellow = np.array([0,23,0])
-        upper_yellow = np.array([49,255,255])
+        lower_yellow = np.array([0,34,0])
+        upper_yellow = np.array([56,165,170])
     
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
           
@@ -28,10 +28,16 @@ class computerVision(object):
  
           
         _, contours, hierarchy = cv2.findContours(cube_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+        #Filtering with Aspect Ratio : 0.80139
         for c in contours:
-            if cv2.contourArea(c) < 100:
+            rect_filter = cv2.minAreaRect(c)
+            width_filter, height_filter = rect_filter[1]
+            if height_filter == 0:
                 continue
-            elif cv2.contourArea(c) > 30000:
+            if width_filter  / height_filter < 0.1:
+                continue
+            elif width_filter  / height_filter > 0.7:
                 continue
             else:
                 filtered_contours.append(c)
@@ -132,17 +138,21 @@ class computerVision(object):
                 #Find Height / Width for Distance Calculation
                 width, height = rect[1]
 
-                print(c_num, width, height)
+                
+                # Focal lenght = (Pixel Width x Distance) / Width
+                # FL = (196 x 34in) / 13 in = 512.61
 
+                # Distance = (Width x Focal Lenght) / Pixel Width
+                distance = (13 * 512.61) / width
 
-                distance = (3*639.9) / width
                 #Adding Information to for console output
-                console_Array.append([c_num, width/height, distance])
+                console_Array.append([c_num, distance])
+                
                
             cv2.imshow("Video", obj_stream)
 
             if computerVision.Enquiry(console_Array):
-                UI.userInterface.object_Found(consoleBoxes)
+                UI.userInterface.object_Found(consoleBoxes, console_Array)
             else:
                 UI.userInterface.object_NOT_Found(consoleBoxes)
 
