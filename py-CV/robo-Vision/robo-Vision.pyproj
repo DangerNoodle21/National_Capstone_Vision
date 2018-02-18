@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>71ed4933-5508-4c73-bca8-febb1009fe56</ProjectGuid>
+    <ProjectGuid>d8be6512-d317-4c88-84b1-253ad6c6b272</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CV_Build.py</StartupFile>
+    <StartupFile>robo_Vision.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>CV-Build</Name>
-    <RootNamespace>CV-Build</RootNamespace>
+    <Name>robo-Vision</Name>
+    <RootNamespace>robo-Vision</RootNamespace>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -23,15 +23,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="classes\CV.py" />
-    <Compile Include="classes\UI.py" />
-    <Compile Include="classes\__init__.py" />
-    <Compile Include="CV_Build.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6" />
+    <Compile Include="classes\FLASK.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\I2C.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\UI.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="robo_Vision.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

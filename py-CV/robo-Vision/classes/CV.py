@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
-import curses
-from classes import UI
+from classes import *
 
 class computerVision(object):
 
@@ -26,8 +25,7 @@ class computerVision(object):
     #Computer Vision Profile for Power-Cube
     def cubeProfile(stream, filtered_contours):
         
-
-        cube_blur  = cv2.GaussianBlur(stream, (33,33),0)
+        cube_blur  = cv2.GaussianBlur(stream, (27,27),0)
     
         hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
     
@@ -35,9 +33,6 @@ class computerVision(object):
         upper_yellow = np.array([25,139,233])
     
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
-          
-        #cube_canny = cv2.Canny(mask, 50, 200, None, 3)
- 
           
         _, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -57,45 +52,9 @@ class computerVision(object):
 
             return filtered_contours
 
-
-
-    #Computer Vision Profile for Practice Targeting Square   
-    def targetSquareProfile(stream, filtered_contours):
-
-        # Converts to gray scale / Adds Blur / Converts to CannyEdge Detection
-        video_stream_gray = cv2.cvtColor(video_stream, cv2.COLOR_RGB2GRAY)
-        video_stream_gray = cv2.GaussianBlur(video_stream_gray, (3,3),0)
-        video_stream_gray = cv2.Canny(video_stream_gray, 50, 200, None, 3)
-
-
-        #Finds the Contours in frame taken, then prints the amount it finds
-        _, contours, hierarchy = cv2.findContours(video_stream_gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        con_unFiltered = len(contours)
-
-        #For loop for filtering out contours based on pixel Area
-        for c in contours:
-            rect = cv2.minAreaRect(c)
-            width_filter, height_filter = rect[1]
-            if height_filter == 0:
-                continue
-            elif width_filter/height_filter > 1.41:
-                continue
-            elif width_filter/height_filter < 1.40:
-                continue
-            else:
-                filtered_contours.append(c)
-
-        return filtered_contours
     
     #Main Computer Vision Program
-    def comp_vision_start(stdscr):
-
-        stdscr = curses.initscr()
-        #Curses Display - Options
-        curses.start_color(); curses.curs_set(0);
-
-        #Creating console out boxes from UI
-        consoleBoxes= UI.userInterface.outputBoxCreator(stdscr);
+    def comp_vision_start():
 
         #Starting Video Stream
         stream = cv2.VideoCapture(computerVision.camera_choice)

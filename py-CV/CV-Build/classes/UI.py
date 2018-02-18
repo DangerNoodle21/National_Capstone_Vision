@@ -136,13 +136,9 @@ class userInterface(object):
                 'dis_Window_title':dis_Window_title, 'dis_Window_info':dis_Window_info}
 
     def object_Found(consoleBoxes, console_Array):
-
-        
-
-        curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
         
         consoleBoxes['dis_Window_title'].erase()
-        consoleBoxes['dis_Window_title'].attron(curses.color_pair(1))
+        consoleBoxes['dis_Window_title'].attron(curses.color_pair(2))
         consoleBoxes['dis_Window_title'].attron(curses.A_BOLD)
         consoleBoxes['dis_Window_title'].addstr(2,2,"OBJ. DETECTED")
         consoleBoxes['dis_Window_title'].box(0,0)
@@ -153,31 +149,20 @@ class userInterface(object):
         consoleBoxes['dis_Window_info'].attron(curses.A_BOLD)
         consoleBoxes['dis_Window_info'].box(0,0)
         
-        
-        for x in console_Array:
-            if console_Array[x] >= 5: break
+        safenum = 0
+        listNum = len(console_Array)
+        for x in range(0,listNum):
+            if safenum >= 5: break
             cnum, dist = console_Array[x]
-            consoleBoxes['dis_Window_info'].addstr(x + 2, 2,num)
-            consoleBoxes['dis_Window_info'].addstr(x + 2, 4,dis)
+            cnum = str(cnum); dist = str(dist)
+            consoleBoxes['dis_Window_info'].addstr(x + 2, 2,cnum)
+            consoleBoxes['dis_Window_info'].addstr(x + 2, 4,dist)
+            safenum = safenum + 1 
 
-
-
-        
-        
         consoleBoxes['dis_Window_info'].refresh()
-
-      
-
-
-
-
 
 
     def object_NOT_Found(consoleBoxes):
-
-
-        curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
-
 
         consoleBoxes['dis_Window_title'].erase()
         consoleBoxes['dis_Window_title'].attron(curses.color_pair(1))

@@ -7,6 +7,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "py-Tests", "py-CVideo\py-Te
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CV-Build", "CV-Build\CV-Build.pyproj", "{71ED4933-5508-4C73-BCA8-FEBB1009FE56}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "robo-Vision", "robo-Vision\robo-Vision.pyproj", "{D8BE6512-D317-4C88-84B1-253AD6C6B272}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,8 @@ Global
 		{ED70A7F9-513C-4CDC-8833-86281F5F9132}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71ED4933-5508-4C73-BCA8-FEBB1009FE56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71ED4933-5508-4C73-BCA8-FEBB1009FE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8BE6512-D317-4C88-84B1-253AD6C6B272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8BE6512-D317-4C88-84B1-253AD6C6B272}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
