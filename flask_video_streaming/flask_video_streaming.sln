@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "flask_video_streaming", "flask_video_streaming\flask_video_streaming.pyproj", "{02A3EE01-7DFE-483E-84D8-F40ED7DEB052}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02A3EE01-7DFE-483E-84D8-F40ED7DEB052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A3EE01-7DFE-483E-84D8-F40ED7DEB052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0089C497-1EF8-45C9-964B-3925482E9EBC}
+	EndGlobalSection
+EndGlobal

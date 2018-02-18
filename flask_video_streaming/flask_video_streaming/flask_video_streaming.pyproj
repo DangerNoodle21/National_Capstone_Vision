@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>d8be6512-d317-4c88-84b1-253ad6c6b272</ProjectGuid>
+    <ProjectGuid>02a3ee01-7dfe-483e-84d8-f40ed7deb052</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>robo_Vision.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>robo-Vision</Name>
-    <RootNamespace>robo-Vision</RootNamespace>
+    <Name>flask_video_streaming</Name>
+    <RootNamespace>flask_video_streaming</RootNamespace>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,26 +22,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="cv_objs\CV.py" />
-    <Compile Include="cv_objs\FLASK.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="cv_objs\UI.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="cv_objs\__init__.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="robo_Vision.py" />
+    <Compile Include="camera.py" />
+    <Compile Include="main.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\robo-Vision\cv_objs\" />
+    <Folder Include="templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="templates\index.html" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="cv_objs\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
