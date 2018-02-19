@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 from cv_objs import UI
-from flask import Flask, render_template, Response
 
 class computerVision(object):
     # Object Variable - for camera Choice and Console out options
