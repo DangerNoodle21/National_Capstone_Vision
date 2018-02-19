@@ -36,6 +36,7 @@
     <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\robo-Vision\cv_objs\" />
     <Folder Include="cv_objs\" />
     <Folder Include="C:\Users\marcd\source\repos\Capstone_FRC-Vision_2018\py-CV\robo-Vision\templates\" />
+    <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
