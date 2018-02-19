@@ -1,12 +1,12 @@
-from classes import *
+from cv_objs import *
 from curses import wrapper
 
 
 def main():
 
-    vid1 = computerVision(0, 1)
+    vid1 = computerVision()
 
-    wrapper(vid1.comp_vision_start())
+    vid1.comp_vision_start()
 
 
 #If Statement to call main function
