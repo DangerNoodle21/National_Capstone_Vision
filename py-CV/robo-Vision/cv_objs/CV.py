@@ -4,21 +4,10 @@ from cv_objs import UI
 
 class computerVision(object):
     # Object Variable - for camera Choice and Console out options
-    cube_vid_pic = 0
-    camera_choice = 0
-    console_out = 0
     cube_user_inter = UI.userInterface()
 
-
-    #Object Initialization
-    def __init__(self, camera_choice, con_out):
-       
-        computerVision.camera_choice = camera_choice
-        computerVision.console_out = con_out
-
-
     #To find if array is empty or not
-    def Enquiry(self, lis1):
+    def Enquiry(self,lis1):
         if len(lis1) == 0:
             return False
         else:
@@ -78,96 +67,85 @@ class computerVision(object):
 
     
     #Main Vision-ID Method
-    def comp_vision_start(self):
+    def comp_vision_start(self, obj_stream):
 
-        #Starting Video Stream
-        cube_vid_stream = cv2.VideoCapture(computerVision.camera_choice)
+        #Array for storing filtered Contours / console array to send to console output
+        filtered_contours = []
+        console_Array = []
 
-        while(True):
+        #Contour Number for Identification
+        c_num = 0
 
-            #Array for storing filtered Contours / console array to send to console output
-            filtered_contours = []
-            console_Array = []
-
-            #Contour Number for Identification
-            c_num = 0
-
-            #Video Capture of from Stream
-            ret, obj_stream  = cube_vid_stream.read()
-
-            #Cube Profile return filtered_countours array
-            computerVision.cubeProfile(obj_stream, filtered_contours)
+        #Cube Profile return filtered_countours array
+        computerVision.cubeProfile(obj_stream, filtered_contours)
           
-            #Number of Filtered Contours
-            con_filtered = len(filtered_contours)
-            #Array for drawing contours
-            objects = np.zeros([obj_stream.shape[0], obj_stream.shape[1],3], 'uint8')
+        #Number of Filtered Contours
+        con_filtered = len(filtered_contours)
+        #Array for drawing contours
+        objects = np.zeros([obj_stream.shape[0], obj_stream.shape[1],3], 'uint8')
 
-            #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
-            for c in filtered_contours:
+        #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
+        for c in filtered_contours:
 
-                #Contour Number
-                c_num = c_num + 1
-                font = cv2.FONT_HERSHEY_SIMPLEX
-                text = str(c_num)
+            #Contour Number
+            c_num = c_num + 1
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            text = str(c_num)
 
-                #Centroid
-                # Had to add +1 to avoid Division by Zero error
-                M = cv2.moments(c)
-                cx = int( M['m10']/(M['m00'] + 1))
-                cy = int( M['m01']/(M['m00'] + 1))
+            #Centroid
+            # Had to add +1 to avoid Division by Zero error
+            M = cv2.moments(c)
+            cx = int( M['m10']/(M['m00'] + 1))
+            cy = int( M['m01']/(M['m00'] + 1))
 
-                #Centroids
-                cv2.circle(obj_stream, (cx,cy), 4, (0, 0, 255), -1)
+            #Centroids
+            cv2.circle(obj_stream, (cx,cy), 4, (0, 0, 255), -1)
 
-                #Area of Found Contour
-                rect = cv2.minAreaRect(c)
-                #Drawing box around fount contour
-                box = cv2.boxPoints(rect)
-                box = np.int0(box)
+            #Area of Found Contour
+            rect = cv2.minAreaRect(c)
+            #Drawing box around fount contour
+            box = cv2.boxPoints(rect)
+            box = np.int0(box)
 
-                #Drawing Red Box Around Contour
-                cv2.drawContours(obj_stream,[box],0,(0,0,255),2)
+            #Drawing Red Box Around Contour
+            cv2.drawContours(obj_stream,[box],0,(0,0,255),2)
 
 
-                #Drawing number on contour
-                cv2.putText(obj_stream, text, (cx + 1, cy + 1), font, 1, (0,255,0), 1, cv2.LINE_AA)
+            #Drawing number on contour
+            cv2.putText(obj_stream, text, (cx + 1, cy + 1), font, 1, (0,255,0), 1, cv2.LINE_AA)
 
-                #Find Height / Width for Distance Calculation
-                width, height = rect[1]
+            #Find Height / Width for Distance Calculation
+            width, height = rect[1]
 
                 
-                # Focal length = (Pixel Width x Distance) / Width
-                # FL = (196 x 34in) / 13 in = 512.61
+            # Focal length = (Pixel Width x Distance) / Width
+            # FL = (196 x 34in) / 13 in = 512.61
 
-                # Distance = (Width x Focal Length) / Pixel Width
-                distance = (13 * 512.61) / width
+            # Distance = (Width x Focal Length) / Pixel Width
+            distance = (13 * 512.61) / width
 
-                #Adding Information to for console output
-                console_Array.append([c_num, distance, (cx, cy)])
+            #Adding Information to for console output
+            console_Array.append([c_num, distance, (cx, cy)])
                 
-            #drawing distance box
-            self.cube_user_inter.draw_distance_Box(obj_stream)
+        #drawing distance box
+        self.cube_user_inter.draw_distance_Box(obj_stream)
 
 
-            if self.Enquiry(console_Array) == False:
-                self.cube_user_inter.draw_grabber_lines_red(obj_stream)
+        if self.Enquiry(console_Array) == False:
+            self.cube_user_inter.draw_grabber_lines_red(obj_stream)
 
-            elif self.cube_user_inter.check_cube_inRange(console_Array, obj_stream):
-                self.cube_user_inter.draw_grabber_lines_green(obj_stream)
-                self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
+        elif self.cube_user_inter.check_cube_inRange(console_Array, obj_stream):
+            self.cube_user_inter.draw_grabber_lines_green(obj_stream)
+            self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
 
-            else:
-                self.cube_user_inter.draw_grabber_lines_red(obj_stream)
-                self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
+        else:
+            self.cube_user_inter.draw_grabber_lines_red(obj_stream)
+            self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
 
             
 
-            #displaying video
-            cv2.imshow("Cube_Vid", obj_stream)
+        #displaying video
+        #cv2.imshow("Cube_Vid", obj_stream)
 
-            #Break if statement
-            ch2 = cv2.waitKey(1)
-            if ch2 & 0xFf == ord('q'):
-                break
+        return obj_stream
 
