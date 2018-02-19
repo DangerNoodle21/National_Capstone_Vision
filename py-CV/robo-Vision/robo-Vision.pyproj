@@ -23,9 +23,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="cv_objs\CV.py" />
-    <Compile Include="cv_objs\FLASK.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="cv_objs\UI.py">
       <SubType>Code</SubType>
     </Compile>
@@ -36,12 +33,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="C:\Users\marcd\Source\Repos\Capstone_FRC-Vision_2018\py-CV\robo-Vision\cv_objs\" />
+    <Folder Include="cv_objs\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="cv_objs\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

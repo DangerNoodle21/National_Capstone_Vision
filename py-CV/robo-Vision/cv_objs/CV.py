@@ -1,9 +1,11 @@
 import numpy as np
 import cv2
 from cv_objs import UI
+from flask import Flask, render_template, Response
 
 class computerVision(object):
     # Object Variable - for camera Choice and Console out options
+    cube_vid_pic = 0
     camera_choice = 0
     console_out = 0
     cube_user_inter = UI.userInterface()
@@ -12,10 +14,10 @@ class computerVision(object):
 
     #Object Initialization
     def __init__(self, camera_choice, con_out):
-
+       
         computerVision.camera_choice = camera_choice
         computerVision.console_out = con_out
-        
+
 
     #To find if array is empty or not
     def Enquiry(lis1):
@@ -82,13 +84,11 @@ class computerVision(object):
 
         #Starting Video Stream
         cube_vid_stream = cv2.VideoCapture(computerVision.camera_choice)
-
         while(True):
 
             #Array for storing filtered Contours / console array to send to console output
             filtered_contours = []
             console_Array = []
-            cv2.namedWindow("Cube_Vid")
 
             #Contour Number for Identification
             c_num = 0
@@ -147,13 +147,14 @@ class computerVision(object):
                 #Adding Information to for console output
                 console_Array.append([c_num, distance])
                 
-            #showing Video
 
             #drawing distance box
-            computerVision.cube_user_inter.draw_distance_Box(obj_stream)
+            self.cube_user_inter.draw_distance_Box(obj_stream)
             #drawing green grabber lines
-            computerVision.cube_user_inter.draw_grabber_lines_green(obj_stream)
-            #displaying video  
+            self.cube_user_inter.draw_grabber_lines_green(obj_stream)
+
+            self.cube_vid_pic =  obj_stream
+            #displaying video
             cv2.imshow("Cube_Vid", obj_stream)
 
             #Break if statement
