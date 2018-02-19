@@ -9,7 +9,6 @@ class computerVision(object):
     camera_choice = 0
     console_out = 0
     cube_user_inter = UI.userInterface()
-    #cube_i2c = I2C(0x04)
 
 
     #Object Initialization
@@ -20,7 +19,7 @@ class computerVision(object):
 
 
     #To find if array is empty or not
-    def Enquiry(lis1):
+    def Enquiry(self, lis1):
         if len(lis1) == 0:
             return False
         else:
@@ -31,7 +30,7 @@ class computerVision(object):
     def cubeProfile(stream, filtered_contours):
 
         #Adding Gauss Blur, - Number must be odd
-        cube_blur  = cv2.GaussianBlur(stream, (27,27),0)
+        cube_blur  = cv2.GaussianBlur(stream, (21,21),0)
         #Converting picture to Hue, Saturation, Value Array
         hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
 
@@ -62,7 +61,7 @@ class computerVision(object):
             if height_filter == 0: 
                 continue
             #If distance is over 1000 inches, skip
-            if (13 * 512.61) / width_filter > 1000: 
+            if (13 * 512.61) / width_filter > 600: 
                 continue
             #Aspect Ratio Filter, Above & equal to 1, skip
             elif width_filter  / height_filter >= 1: 
@@ -84,6 +83,7 @@ class computerVision(object):
 
         #Starting Video Stream
         cube_vid_stream = cv2.VideoCapture(computerVision.camera_choice)
+
         while(True):
 
             #Array for storing filtered Contours / console array to send to console output
@@ -145,15 +145,25 @@ class computerVision(object):
                 distance = (13 * 512.61) / width
 
                 #Adding Information to for console output
-                console_Array.append([c_num, distance])
+                console_Array.append([c_num, distance, (cx, cy)])
                 
-
             #drawing distance box
             self.cube_user_inter.draw_distance_Box(obj_stream)
-            #drawing green grabber lines
-            self.cube_user_inter.draw_grabber_lines_green(obj_stream)
 
-            self.cube_vid_pic =  obj_stream
+
+            if self.Enquiry(console_Array) == False:
+                self.cube_user_inter.draw_grabber_lines_red(obj_stream)
+
+            elif self.cube_user_inter.check_cube_inRange(console_Array, obj_stream):
+                self.cube_user_inter.draw_grabber_lines_green(obj_stream)
+                self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
+
+            else:
+                self.cube_user_inter.draw_grabber_lines_red(obj_stream)
+                self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
+
+            
+
             #displaying video
             cv2.imshow("Cube_Vid", obj_stream)
 
