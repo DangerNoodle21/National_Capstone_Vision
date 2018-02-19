@@ -23,6 +23,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="cv_objs\CV.py" />
+    <Compile Include="cv_objs\I2C.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="cv_objs\UI.py">
       <SubType>Code</SubType>
     </Compile>
