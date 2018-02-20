@@ -24,8 +24,8 @@ def main():
     for x in range(0, 10):
         num = random.randint(1, 9999)
         list_1.append(num)
-    length = len(list_1)
-    for y in range(0, length):
+    
+    for y in range(0, 10):
         number = list_1[y]
         print(number)
         send_w_wrapper(number)
