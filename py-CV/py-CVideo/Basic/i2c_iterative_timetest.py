@@ -22,11 +22,12 @@ def main():
     list_1 = []
 
     for x in range(0, 10):
-        num = random.randint(1000, 9999)
+        num = random.randint(1, 9999)
         list_1.append(num)
     length = len(list_1)
-    for y in range(0, lenght):
-        number = list_1[x]
+    for y in range(0, length):
+        number = list_1[y]
+        print(number)
         send_w_wrapper(number)
         time.sleep(.2)
 
