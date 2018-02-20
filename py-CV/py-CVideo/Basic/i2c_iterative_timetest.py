@@ -23,7 +23,8 @@ def main():
 
     for x in range(0, 10):
         num = random.randint(1, 9999)
-        list_1.append(1, num)
+        pair = (1, num)
+        list_1.append(pair)
     
     for y in range(0, 10):
         number = list_1[y]
