@@ -22,7 +22,7 @@ class userInterface(object):
         coordinates = self.get_xy_grabber_lines(vid_stream)
         e_l_x, e_l_y  = coordinates[1]
 
-        if cx <= e_l_x:
+        if e_l_x > cx:
             return True
         else:
             return False
@@ -31,9 +31,9 @@ class userInterface(object):
         c_num, distance, (cx, cy) = array[0]
         
         coordinates = self.get_xy_grabber_lines(vid_stream)
-        e_r_x, e_r_y  = coordinates[2]
+        e_r_x, e_r_y  = coordinates[3]
 
-        if cx >= e_r_x:
+        if e_r_x < cx:
             return True
         else:
             return False
@@ -53,8 +53,8 @@ class userInterface(object):
         s_r_y = s_l_y
 
         #E_L_Y = End Left X Coordinate / E_R_Y = End Right X Coordinate
-        e_l_x = int((width /2) - end_x_mulit)
-        e_r_x = int((width /2) + end_x_mulit)
+        e_l_x = int((width /2) - (2*end_x_mulit))
+        e_r_x = int((width /2) + (2*end_x_mulit))
 
         #E_L_Y = End Left Y Coordinate / E_R_Y = End Right Y Coordinate
         e_l_y = height - 10
