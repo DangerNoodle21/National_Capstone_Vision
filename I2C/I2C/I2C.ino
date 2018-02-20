@@ -4,21 +4,31 @@
  Author:	marcd
 */
 
+#include <StandardCplusplus.h>
+#include <vector>
+#include <iterator>
+
 
 #include <Wire.h>
 
+
+
+
 #define i2c_ADDRESS 0x04
+std::vector<int> collector;
 
-char input_numbers[1000];
-
-void receiveData(int byteCount) {
+void receiveData(int byteCount) 
+{
 	int i = 0;
-	while (Wire.available()) {
-		input_numbers[i] = Wire.read();
-		i++;
+	int number;
+	while (Wire.available()) 
+	{
+		collector.push_back(Wire.read());
 	}
-	input_numbers[i] = '\0';
-	Serial.print(input_numbers);
+	Serial.print("\t");
+	number = collector[i];
+	collector.clear();
+	Serial.print(number);
 }  // end while
 
 
