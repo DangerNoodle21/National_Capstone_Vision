@@ -22,6 +22,14 @@ def main():
 
     list_1 = []
 
+    ##Receives the data from the User
+    #data = raw_input("Enter the data to be sent : ")
+    #data_list = list(data)
+    #for i in data_list:
+    #	#Sends to the Slaves 
+    #    writeNumber(int(ord(i)))
+    #    time.sleep(.1)
+
     for x in range(0, 10):
         num = random.randint(1, 9999)
         list_1.append(num)
@@ -29,7 +37,7 @@ def main():
     for y in range(0, 10):
         number = list_1[y]
         print(number)
-        send_regular(number)
+        send_regular(int(ord(number)))
         time.sleep(.2)
 
 
