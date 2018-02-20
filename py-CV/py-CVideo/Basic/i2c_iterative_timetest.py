@@ -30,7 +30,7 @@ def main():
     for y in range(0, 10):
         number = list_1[y]
         print(number)
-        send_regular(number)
+        send_w_wrapper(number)
         time.sleep(.2)
 
 
