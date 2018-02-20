@@ -15,7 +15,8 @@ def send_w_wrapper(number):
         bus.write_i2c_block_data(slave_add, 0, number)
 
 def send_regular(number):
-    rpi_bus.write_i2c_block_data(slave_add, 0, number)
+    rpi_bus.write_byte(slave_add, number)
+
 
 def main():
 
@@ -23,13 +24,12 @@ def main():
 
     for x in range(0, 10):
         num = random.randint(1, 9999)
-        pair = (1, num)
-        list_1.append(pair)
+        list_1.append(num)
     
     for y in range(0, 10):
         number = list_1[y]
         print(number)
-        send_w_wrapper(number)
+        send_regular(number)
         time.sleep(.2)
 
 
