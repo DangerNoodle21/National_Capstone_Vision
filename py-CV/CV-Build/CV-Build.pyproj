@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="C:\Users\marcd\source\repos\Capstone_FRC-Vision_2018\py-CV\CV-Build\cv_objs\" />
+    <Folder Include="cv_objs\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
