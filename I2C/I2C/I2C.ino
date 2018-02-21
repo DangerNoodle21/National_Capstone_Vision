@@ -16,6 +16,8 @@
 
 #define i2c_ADDRESS 0x04
 std::vector<int> collector;
+char test[50];
+
 
 void receiveData(int byteCount) 
 {
@@ -23,12 +25,11 @@ void receiveData(int byteCount)
 	int number;
 	while (Wire.available()) 
 	{
-		collector.push_back(Wire.read());
+		test[i] = Wire.read();
+		i++;
 	}
-	Serial.print("\t");
-	number = collector[i];
-	collector.clear();
-	Serial.print(number);
+	Serial.print("\0");
+	Serial.print(test);
 }  // end while
 
 

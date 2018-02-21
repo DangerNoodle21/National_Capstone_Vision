@@ -28,9 +28,8 @@ def main():
         list_1.append(num)
     
     for y in range(0, 10):
-        number = list_1[y]
-        print(number)
-        send_w_wrapper(number)
+        print(list_1[y])
+        send_w_wrapper(list_1)
         time.sleep(.2)
 
 
