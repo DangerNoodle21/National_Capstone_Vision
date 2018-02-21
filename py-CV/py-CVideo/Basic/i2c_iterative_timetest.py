@@ -28,13 +28,13 @@ def main():
         num = random.randint(1, 9999)
         list_1.append(num)
     
-    if choice == 1:
+    if choice == "1":
         for y in range(0, 10):
             print(list_1[y])
             send_regular(list_1[y])
             time.sleep(.2)
 
-    elif choice == 2:
+    elif choice == "2":
         for y in range(0, 10):
             print(list_1[y])
             send_w_wrapper(list_1)
