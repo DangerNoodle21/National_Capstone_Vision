@@ -33,7 +33,7 @@ def main():
             print(list_1[y])
             counter = int(len(str(list_1[y])))
             for i in range(counter):
-                send_regular(int(list_1[y]))
+                send_regular(int(ord(list_1[y])))
                 time.sleep(.2)
 
     elif choice == "2":
