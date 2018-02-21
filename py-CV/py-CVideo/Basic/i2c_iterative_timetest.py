@@ -22,15 +22,25 @@ def main():
 
     list_1 = []
 
+    choice = input("1 = Byte, 2 = block: ")
 
     for x in range(0, 10):
         num = random.randint(1, 9999)
         list_1.append(num)
     
-    for y in range(0, 10):
-        print(list_1[y])
-        send_w_wrapper(list_1)
-        time.sleep(.2)
+    if choice == 1:
+        for y in range(0, 10):
+            print(list_1[y])
+            send_regular(list_1[y])
+            time.sleep(.2)
+
+    elif choice == 2:
+        for y in range(0, 10):
+            print(list_1[y])
+            send_w_wrapper(list_1)
+            time.sleep(.2)
+    else:
+        print("No Choice")
 
 
 if __name__ == '__main__':
