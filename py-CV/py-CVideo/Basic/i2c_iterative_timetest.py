@@ -31,8 +31,10 @@ def main():
     if choice == "1":
         for y in range(0, 10):
             print(list_1[y])
-            send_regular(list_1[y])
-            time.sleep(.2)
+            counter = int(len(str(list_1[y])))
+            for i in range(counter):
+                send_regular(int(list_1[y]))
+                time.sleep(.2)
 
     elif choice == "2":
         for y in range(0, 10):
