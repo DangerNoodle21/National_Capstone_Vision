@@ -15,9 +15,9 @@
 
 
 #define i2c_ADDRESS 0x04
-std::vector<int> collector;
-char test[50];
 
+
+std::vector<i> vec;
 
 void receiveData(int byteCount) 
 {
