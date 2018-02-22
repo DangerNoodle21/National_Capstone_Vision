@@ -35,7 +35,7 @@ def main():
             list_send = list(str(list_make[y]))
             for i in list_send:
                 send_regular(int(ord(i)))
-                time.sleep(.1)
+                time.sleep(.01)
             send_regular(int(0x0A))
 
     elif choice == "2":
@@ -44,7 +44,7 @@ def main():
             list_send = list(str(list_make[y]))
             for i in list_send:
                 send_w_wrapper(int(ord(i)))
-                time.sleep(.1)
+                time.sleep(.01)
             writeNumber(int(0x0A))
     else:
         print("No Choice")
