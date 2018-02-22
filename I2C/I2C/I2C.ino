@@ -17,19 +17,18 @@
 #define i2c_ADDRESS 0x04
 
 
-std::vector<i> vec;
+char holder[10];
 
 void receiveData(int byteCount) 
 {
 	int i = 0;
-	int number;
 	while (Wire.available()) 
 	{
-		test[i] = Wire.read();
+		holder[i] = Wire.read();
 		i++;
 	}
-	Serial.print("\0");
-	Serial.print(test);
+	holder[i] = ('\0');
+	Serial.print(holder);
 }  // end while
 
 

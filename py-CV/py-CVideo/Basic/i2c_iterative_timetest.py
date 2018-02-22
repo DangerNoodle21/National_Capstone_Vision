@@ -36,6 +36,7 @@ def main():
             for i in list_send:
                 send_regular(int(ord(i)))
                 time.sleep(.1)
+            send_regular(int(0x0A))
 
     elif choice == "2":
         for y in range(10):
@@ -44,6 +45,7 @@ def main():
             for i in list_send:
                 send_w_wrapper(int(ord(i)))
                 time.sleep(.1)
+            writeNumber(int(0x0A))
     else:
         print("No Choice")
 
