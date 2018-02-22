@@ -25,25 +25,25 @@ def main():
 
     choice = input("1 = Byte, 2 = block: ")
 
-    for x in range(0, 10):
+    for x in range(10):
         num = random.randint(1, 9999)
         list_make.append(num)
     
     if choice == "1":
-        for y in range(0, 10):
+        for y in range(10):
             print(list_make[y])
             counter = int(len(str(list_make[y])))
             for i in range(counter):
                 send_regular(int(ord(str(list_make[y]))))
-                time.sleep(.2)
+                time.sleep(.1)
 
     elif choice == "2":
-        for y in range(0, 10):
+        for y in range(10):
             print(list_make[y])
             list_send = list(str(list_make[y]))
             for i in list_send:
-                send_w_wrapper(int(ord(list_send)))
-                time.sleep(.2)
+                send_w_wrapper(int(ord(i)))
+                time.sleep(.1)
     else:
         print("No Choice")
 
