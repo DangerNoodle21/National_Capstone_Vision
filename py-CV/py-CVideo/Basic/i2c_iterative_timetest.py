@@ -32,9 +32,9 @@ def main():
     if choice == "1":
         for y in range(10):
             print(list_make[y])
-            counter = int(len(str(list_make[y])))
-            for i in range(counter):
-                send_regular(int(ord(str(list_make[y]))))
+            list_send = list(str(list_make[y]))
+            for i in list_send:
+                send_regular(int(ord(i)))
                 time.sleep(.1)
 
     elif choice == "2":
