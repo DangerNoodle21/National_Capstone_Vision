@@ -1,7 +1,8 @@
 import numpy as np
 import cv2
 import argparse
-from cv_objs import *
+from cv_objs import UI
+from cv_objs import I2C
 
 class computerVision:
 
