@@ -8,7 +8,7 @@ class computerVision:
 
     # Object Variable - for camera Choice and Console out options
     cube_user_inter = UI.userInterface()
-    i2c_obj = I2C.I2C()
+    i2c_obj = I2C.I2C(addess_i2c)
 
     target_Choice = 0
     addess_i2c = 0
