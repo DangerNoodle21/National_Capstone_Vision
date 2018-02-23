@@ -4,7 +4,7 @@ import cv2
 class WebcamVideoStream:
 
     def __init__(self, src=0):
-        #
+        #Initialize the video stream with source of 0
         self.stream = cv2.VideoCapture(src)
         (self.grabbed, self.frame) = self.stream.read()
         self.stopped = False
@@ -15,11 +15,12 @@ class WebcamVideoStream:
         return self
 
     def update(self):
-
+        #Keep looping until the thread is stopped
         while(True):
-
+            #if the thread indicator is stopped, stop the 
             if self.stopped:
                 return
+            (self.grabbed, self.frame) = self.stream.read()
 
     def read(self):
         return self.frame
