@@ -22,6 +22,7 @@ def main():
 
     compVision = CV.computerVision(args["target"], args["i2c"])
     threaded_stream = WebcamVideoStream(src=0).start()
+    fps = FPS().start()
 
     while(True):
         vid_stream = threaded_stream.read()

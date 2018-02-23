@@ -5,13 +5,13 @@ from cv_objs import UI
 from cv_objs import I2C
 
 class computerVision:
-
+    
+    # Object Variable - for camera Choice and Console out options
+    cube_user_inter = 0
     target_Choice = 0
     addess_i2c = 0
-    # Object Variable - for camera Choice and Console out options
+    i2c_obj = 0
     
-
-   
 
     def __init__(self, choice, address):
         self.target_Choice = choice
