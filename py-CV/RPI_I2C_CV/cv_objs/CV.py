@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from cv_objs import *
+from cv_objs import UI
 
 class computerVision(object):
 
@@ -69,6 +69,10 @@ class computerVision(object):
     
     #Main Vision-ID Method
     def comp_vision_start(self):
+
+        
+
+        stream = cv2.VideoCapture(0)
         
         while(True):
 
@@ -135,28 +139,20 @@ class computerVision(object):
             #drawing distance box
             self.cube_user_inter.draw_distance_Box(obj_stream)
 
-            #Drawing Distance in Main-Box if Something is detected
-            if self.Enquiry(console_Array):
-                #Distance Box
+
+            if self.Enquiry(console_Array) == True:
                 self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
 
-
-                #If center point of Detected Centroid is less than the grabber end line - Left
                 if self.cube_user_inter.check_cube_inRange_left(console_Array, obj_stream):
-                    #Draw Left line - Left
                     self.cube_user_inter.draw_grabber_lines_red_left(obj_stream)
                 else:
-                    #draw Left line - Green
                     self.cube_user_inter.draw_grabber_lines_green_left(obj_stream)
 
-                #If center point of Detected Centroid is less than the grabber end line - Right
                 if self.cube_user_inter.check_cube_inRange_right(console_Array, obj_stream):
-                    #Draw Right line - Red
                     self.cube_user_inter.draw_grabber_lines_red_right(obj_stream)
                 else:
-                    #Draw Right Line - Green
                     self.cube_user_inter.draw_grabber_lines_green_right(obj_stream)
-            #If no 
+
             else:
                 self.cube_user_inter.draw_grabber_lines_green_right(obj_stream)
                 self.cube_user_inter.draw_grabber_lines_green_left(obj_stream)

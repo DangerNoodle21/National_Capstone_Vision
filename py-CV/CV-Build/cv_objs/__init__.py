@@ -1,2 +1,1 @@
-from .CV import computerVision
-from .UI import userInterface
+from .UI import *

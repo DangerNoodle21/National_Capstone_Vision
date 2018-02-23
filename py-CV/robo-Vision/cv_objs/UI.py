@@ -5,7 +5,7 @@ class userInterface(object):
 
 
     #Object Variables
-    distance_drawer = 60
+
     line_type = cv2.LINE_AA
     line_thinkness_rectangle = 3
     line_thinkness_grabbers= 5
@@ -16,14 +16,26 @@ class userInterface(object):
 
 
 
-    def check_cube_inRange(self, array, vid_stream):
+    def check_cube_inRange_left(self, array, vid_stream):
         c_num, distance, (cx, cy) = array[0]
         
         coordinates = self.get_xy_grabber_lines(vid_stream)
-        s_l_x, s_l_y  = coordinates[0]
-        s_r_x, s_r_y  = coordinates[2]
+        e_l_x, e_l_y  = coordinates[1]
 
-        if distance <= self.distance_drawer and cx >= s_r_x:
+        if cx < e_l_x:
+            return False
+        else:
+            return True
+
+    def check_cube_inRange_right(self, array, vid_stream):
+        c_num, distance, (cx, cy) = array[0]
+        
+        coordinates = self.get_xy_grabber_lines(vid_stream)
+        e_r_x, e_r_y  = coordinates[3]
+
+        if cx > e_r_x:
+            return False
+        else:
             return True
 
     def get_xy_grabber_lines(self, vid_stream):
@@ -41,8 +53,8 @@ class userInterface(object):
         s_r_y = s_l_y
 
         #E_L_Y = End Left X Coordinate / E_R_Y = End Right X Coordinate
-        e_l_x = int((width /2) - end_x_mulit)
-        e_r_x = int((width /2) + end_x_mulit)
+        e_l_x = int((width /2) - (2*end_x_mulit))
+        e_r_x = int((width /2) + (2*end_x_mulit))
 
         #E_L_Y = End Left Y Coordinate / E_R_Y = End Right Y Coordinate
         e_l_y = height - 10
@@ -78,7 +90,7 @@ class userInterface(object):
 
 
 
-    def draw_grabber_lines_green(self, vid_stream):
+    def draw_grabber_lines_green_left(self, vid_stream):
         
         #getting line coordinates
         coordinates = self.get_xy_grabber_lines(vid_stream)
@@ -87,16 +99,22 @@ class userInterface(object):
         s_l_x, s_l_y  = coordinates[0]
         e_l_x, e_l_y = coordinates[1]
 
-        cv2.line(vid_stream_green, (s_l_x, s_l_y), (e_l_x, e_l_y), self.green_color, self.line_thinkness_grabbers)
+        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.green_color, self.line_thinkness_grabbers)
+
+    def draw_grabber_lines_green_right(self, vid_stream):
+        
+        #getting line coordinates
+        coordinates = self.get_xy_grabber_lines(vid_stream)
 
         #Drawing left grabber line
         s_r_x, s_r_y  = coordinates[2]
         e_r_x, e_r_y = coordinates[3]
 
-        cv2.line(vid_stream_green, (s_r_x, s_r_y), (e_r_x, e_r_y), self.green_color, self.line_thinkness_grabbers)
+        cv2.line(vid_stream, (s_r_x, s_r_y), (e_r_x, e_r_y), self.green_color, self.line_thinkness_grabbers)
 
    
-    def draw_grabber_lines_red(self, vid_stream):
+   
+    def draw_grabber_lines_red_left(self, vid_stream):
         
         #getting line coordinates
         coordinates = self.get_xy_grabber_lines(vid_stream)
@@ -107,8 +125,13 @@ class userInterface(object):
 
         cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thinkness_grabbers)
 
-        #Drawing left grabber line
-        s_r_x, s_r_y  = coordinates[2]
-        e_r_x, e_r_y = coordinates[3]
+    def draw_grabber_lines_red_right(self, vid_stream):
+        
+        #getting line coordinates
+        coordinates = self.get_xy_grabber_lines(vid_stream)
 
-        cv2.line(vid_stream, (s_r_x, s_r_y), (e_r_x, e_r_y), self.red_color, self.line_thinkness_grabbers)
+        #Drawing left grabber line
+        s_l_x, s_l_y  = coordinates[0]
+        e_l_x, e_l_y = coordinates[1]
+
+        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thinkness_grabbers)
