@@ -1,10 +1,20 @@
 import numpy as np
 import cv2
-from cv_objs import UI
+import argparse
+from cv_objs import *
 
-class computerVision(object):
+class computerVision:
+
     # Object Variable - for camera Choice and Console out options
     cube_user_inter = UI.userInterface()
+    i2c_obj = I2C.I2C()
+
+    target_Choice = 0
+    addess_i2c = 0
+
+    def __init__(self, choice, address):
+        self.target_Choice = choice
+        self.addess_i2c = address
 
     #To find if array is empty or not
     def Enquiry(self,lis1):
@@ -15,7 +25,7 @@ class computerVision(object):
    
 
     #Computer Vision Profile for Power-Cube
-    def cubeProfile(stream, filtered_contours):
+    def cubeProfile(self, stream, filtered_contours):
 
         #Adding Gauss Blur, - Number must be odd
         cube_blur  = cv2.GaussianBlur(stream, (21,21),0)
@@ -66,8 +76,8 @@ class computerVision(object):
             return filtered_contours
 
     
-    #Main Vision-ID Method
-    def comp_vision_start(self, obj_stream):
+    #Main Computer-Vision Method
+    def comp_vision_start(self, vid_stream):
 
         #Array for storing filtered Contours / console array to send to console output
         filtered_contours = []
@@ -76,13 +86,14 @@ class computerVision(object):
         #Contour Number for Identification
         c_num = 0
 
-        #Cube Profile return filtered_countours array
-        computerVision.cubeProfile(obj_stream, filtered_contours)
+        if self.target_Choice > 0:
+            self.cubeProfile(vid_stream, filtered_contours)
+
           
         #Number of Filtered Contours
         con_filtered = len(filtered_contours)
         #Array for drawing contours
-        objects = np.zeros([obj_stream.shape[0], obj_stream.shape[1],3], 'uint8')
+        objects = np.zeros([vid_stream.shape[0], vid_stream.shape[1],3], 'uint8')
 
         #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
         for c in filtered_contours:
@@ -99,7 +110,7 @@ class computerVision(object):
             cy = int( M['m01']/(M['m00'] + 1))
 
             #Centroids
-            cv2.circle(obj_stream, (cx,cy), 4, (0, 0, 255), -1)
+            cv2.circle(vid_stream, (cx,cy), 4, (0, 0, 255), -1)
 
             #Area of Found Contour
             rect = cv2.minAreaRect(c)
@@ -108,11 +119,11 @@ class computerVision(object):
             box = np.int0(box)
 
             #Drawing Red Box Around Contour
-            cv2.drawContours(obj_stream,[box],0,(0,0,255),2)
+            cv2.drawContours(vid_stream,[box],0,(0,0,255),2)
 
 
             #Drawing number on contour
-            cv2.putText(obj_stream, text, (cx + 1, cy + 1), font, 1, (0,255,0), 1, cv2.LINE_AA)
+            cv2.putText(vid_stream, text, (cx + 1, cy + 1), font, 1, (0,255,0), 1, cv2.LINE_AA)
 
             #Find Height / Width for Distance Calculation
             width, height = rect[1]
@@ -128,24 +139,39 @@ class computerVision(object):
             console_Array.append([c_num, distance, (cx, cy)])
                 
         #drawing distance box
-        self.cube_user_inter.draw_distance_Box(obj_stream)
+        self.cube_user_inter.draw_distance_Box(vid_stream)
+
+        #Drawing Distance in Main-Box if Something is detected
+        if self.Enquiry(console_Array):
+            #Distance Box
+            self.cube_user_inter.draw_distance_number(console_Array, vid_stream)
+
+            #Sending i2c data
+            c_num, distance, (cx, cy) = console_Array[0]
+            self.i2c_obj.i2c_send_byte(distance)
 
 
-        if self.Enquiry(console_Array) == False:
-            self.cube_user_inter.draw_grabber_lines_red(obj_stream)
+            #If center point of Detected Centroid is less than the grabber end line - Left
+            if self.cube_user_inter.check_cube_inRange_left(console_Array, vid_stream):
+                #Draw Left line - Left
+                self.cube_user_inter.draw_grabber_lines_red_left(vid_stream)
+            else:
+                #draw Left line - Green
+                self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
 
-        elif self.cube_user_inter.check_cube_inRange(console_Array, obj_stream):
-            self.cube_user_inter.draw_grabber_lines_green(obj_stream)
-            self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
-
+            #If center point of Detected Centroid is less than the grabber end line - Right
+            if self.cube_user_inter.check_cube_inRange_right(console_Array, vid_stream):
+                #Draw Right line - Red
+                self.cube_user_inter.draw_grabber_lines_red_right(vid_stream)
+            else:
+                #Draw Right Line - Green
+                self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
+        #If no 
         else:
-            self.cube_user_inter.draw_grabber_lines_red(obj_stream)
-            self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
+            self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
+            self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
 
-            
+            #Send i2c data, with Constant 0
+            self.i2c_obj.i2c_send_byte(0)
 
-        #displaying video
-        #cv2.imshow("Cube_Vid", obj_stream)
-
-        return obj_stream
-
+        return vid_stream

@@ -10,7 +10,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>No_I2C_CV</Name>
+    <Name>CV-Only</Name>
     <RootNamespace>CV-Build</RootNamespace>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
