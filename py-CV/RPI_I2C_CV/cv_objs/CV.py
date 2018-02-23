@@ -16,8 +16,8 @@ class computerVision:
     def __init__(self, choice, address):
         self.target_Choice = choice
         self.addess_i2c = address
-        cube_user_inter = UI.userInterface()
-        i2c_obj = I2C.I2C(self.addess_i2c)
+        self.cube_user_inter = UI.userInterface()
+        self.i2c_obj = I2C.I2C(self.addess_i2c)
 
     #To find if array is empty or not
     def Enquiry(self,lis1):
