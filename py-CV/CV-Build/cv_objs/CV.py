@@ -1,11 +1,17 @@
 import numpy as np
 import cv2
+import argparse
 from cv_objs import *
 
-class computerVision(object):
+class computerVision:
 
     # Object Variable - for camera Choice and Console out options
     cube_user_inter = UI.userInterface()
+
+    target_Choice = 0
+
+    def __init__(self, choice):
+        self.target_Choice = choice
 
     #To find if array is empty or not
     def Enquiry(self,lis1):
@@ -16,7 +22,7 @@ class computerVision(object):
    
 
     #Computer Vision Profile for Power-Cube
-    def cubeProfile(stream, filtered_contours):
+    def cubeProfile(self, stream, filtered_contours):
 
         #Adding Gauss Blur, - Number must be odd
         cube_blur  = cv2.GaussianBlur(stream, (21,21),0)
@@ -67,106 +73,95 @@ class computerVision(object):
             return filtered_contours
 
     
-    #Main Vision-ID Method
-    def comp_vision_start(self):
-        
-        while(True):
+    #Main Computer-Vision Method
+    def comp_vision_start(self, vid_stream):
 
-            #Array for storing filtered Contours / console array to send to console output
-            filtered_contours = []
-            console_Array = []
+        #Array for storing filtered Contours / console array to send to console output
+        filtered_contours = []
+        console_Array = []
 
-            #Contour Number for Identification
-            c_num = 0
+        #Contour Number for Identification
+        c_num = 0
 
-            _, obj_stream = stream.read()
+        if self.target_Choice > 0:
+            self.cubeProfile(vid_stream, filtered_contours)
 
-            #Cube Profile return filtered_countours array
-            computerVision.cubeProfile(obj_stream, filtered_contours)
           
-            #Number of Filtered Contours
-            con_filtered = len(filtered_contours)
-            #Array for drawing contours
-            objects = np.zeros([obj_stream.shape[0], obj_stream.shape[1],3], 'uint8')
+        #Number of Filtered Contours
+        con_filtered = len(filtered_contours)
+        #Array for drawing contours
+        objects = np.zeros([vid_stream.shape[0], vid_stream.shape[1],3], 'uint8')
 
-            #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
-            for c in filtered_contours:
+        #For Loop for Filtering Contours - C the number of filtered contours in the array Filtered[]
+        for c in filtered_contours:
 
-                #Contour Number
-                c_num = c_num + 1
-                font = cv2.FONT_HERSHEY_SIMPLEX
-                text = str(c_num)
+            #Contour Number
+            c_num = c_num + 1
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            text = str(c_num)
 
-                #Centroid
-                # Had to add +1 to avoid Division by Zero error
-                M = cv2.moments(c)
-                cx = int( M['m10']/(M['m00'] + 1))
-                cy = int( M['m01']/(M['m00'] + 1))
+            #Centroid
+            # Had to add +1 to avoid Division by Zero error
+            M = cv2.moments(c)
+            cx = int( M['m10']/(M['m00'] + 1))
+            cy = int( M['m01']/(M['m00'] + 1))
 
-                #Centroids
-                cv2.circle(obj_stream, (cx,cy), 4, (0, 0, 255), -1)
+            #Centroids
+            cv2.circle(vid_stream, (cx,cy), 4, (0, 0, 255), -1)
 
-                #Area of Found Contour
-                rect = cv2.minAreaRect(c)
-                #Drawing box around fount contour
-                box = cv2.boxPoints(rect)
-                box = np.int0(box)
+            #Area of Found Contour
+            rect = cv2.minAreaRect(c)
+            #Drawing box around fount contour
+            box = cv2.boxPoints(rect)
+            box = np.int0(box)
 
-                #Drawing Red Box Around Contour
-                cv2.drawContours(obj_stream,[box],0,(0,0,255),2)
+            #Drawing Red Box Around Contour
+            cv2.drawContours(vid_stream,[box],0,(0,0,255),2)
 
 
-                #Drawing number on contour
-                cv2.putText(obj_stream, text, (cx + 1, cy + 1), font, 1, (0,255,0), 1, cv2.LINE_AA)
+            #Drawing number on contour
+            cv2.putText(vid_stream, text, (cx + 1, cy + 1), font, 1, (0,255,0), 1, cv2.LINE_AA)
 
-                #Find Height / Width for Distance Calculation
-                width, height = rect[1]
+            #Find Height / Width for Distance Calculation
+            width, height = rect[1]
 
                 
-                # Focal length = (Pixel Width x Distance) / Width
-                # FL = (196 x 34in) / 13 in = 512.61
+            # Focal length = (Pixel Width x Distance) / Width
+            # FL = (196 x 34in) / 13 in = 512.61
 
-                # Distance = (Width x Focal Length) / Pixel Width
-                distance = (13 * 512.61) / width
+            # Distance = (Width x Focal Length) / Pixel Width
+            distance = (13 * 512.61) / width
 
-                #Adding Information to for console output
-                console_Array.append([c_num, distance, (cx, cy)])
+            #Adding Information to for console output
+            console_Array.append([c_num, distance, (cx, cy)])
                 
-            #drawing distance box
-            self.cube_user_inter.draw_distance_Box(obj_stream)
+        #drawing distance box
+        self.cube_user_inter.draw_distance_Box(vid_stream)
 
-            #Drawing Distance in Main-Box if Something is detected
-            if self.Enquiry(console_Array):
-                #Distance Box
-                self.cube_user_inter.draw_distance_number(console_Array, obj_stream)
+        #Drawing Distance in Main-Box if Something is detected
+        if self.Enquiry(console_Array):
+            #Distance Box
+            self.cube_user_inter.draw_distance_number(console_Array, vid_stream)
 
 
-                #If center point of Detected Centroid is less than the grabber end line - Left
-                if self.cube_user_inter.check_cube_inRange_left(console_Array, obj_stream):
-                    #Draw Left line - Left
-                    self.cube_user_inter.draw_grabber_lines_red_left(obj_stream)
-                else:
-                    #draw Left line - Green
-                    self.cube_user_inter.draw_grabber_lines_green_left(obj_stream)
-
-                #If center point of Detected Centroid is less than the grabber end line - Right
-                if self.cube_user_inter.check_cube_inRange_right(console_Array, obj_stream):
-                    #Draw Right line - Red
-                    self.cube_user_inter.draw_grabber_lines_red_right(obj_stream)
-                else:
-                    #Draw Right Line - Green
-                    self.cube_user_inter.draw_grabber_lines_green_right(obj_stream)
-            #If no 
+            #If center point of Detected Centroid is less than the grabber end line - Left
+            if self.cube_user_inter.check_cube_inRange_left(console_Array, vid_stream):
+                #Draw Left line - Left
+                self.cube_user_inter.draw_grabber_lines_red_left(vid_stream)
             else:
-                self.cube_user_inter.draw_grabber_lines_green_right(obj_stream)
-                self.cube_user_inter.draw_grabber_lines_green_left(obj_stream)
+                #draw Left line - Green
+                self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
 
-            
+            #If center point of Detected Centroid is less than the grabber end line - Right
+            if self.cube_user_inter.check_cube_inRange_right(console_Array, vid_stream):
+                #Draw Right line - Red
+                self.cube_user_inter.draw_grabber_lines_red_right(vid_stream)
+            else:
+                #Draw Right Line - Green
+                self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
+        #If no 
+        else:
+            self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
+            self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
 
-            #displaying video
-            cv2.imshow("Cube_Vid", obj_stream)
-
-            ch2 = cv2.waitKey(1)
-            if ch2 & 0xFf == ord('q'):
-                break
-
+        return vid_stream
