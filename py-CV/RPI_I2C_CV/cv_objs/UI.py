@@ -22,10 +22,10 @@ class userInterface(object):
         coordinates = self.get_xy_grabber_lines(vid_stream)
         e_l_x, e_l_y  = coordinates[1]
 
-        if e_l_x > cx:
-            return True
-        else:
+        if cx < e_l_x:
             return False
+        else:
+            return True
 
     def check_cube_inRange_right(self, array, vid_stream):
         c_num, distance, (cx, cy) = array[0]
@@ -33,10 +33,10 @@ class userInterface(object):
         coordinates = self.get_xy_grabber_lines(vid_stream)
         e_r_x, e_r_y  = coordinates[3]
 
-        if e_r_x < cx:
-            return True
-        else:
+        if cx > e_r_x:
             return False
+        else:
+            return True
 
     def get_xy_grabber_lines(self, vid_stream):
         height, width = vid_stream.shape[0:2]

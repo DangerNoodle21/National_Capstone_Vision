@@ -22,10 +22,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="cv_objs\CV.py" />
+    <Compile Include="cv_objs\FPS.py" />
     <Compile Include="cv_objs\I2C.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="cv_objs\UI.py" />
+    <Compile Include="cv_objs\WebcamVideoStream.py" />
     <Compile Include="cv_objs\__init__.py" />
     <Compile Include="RPI_I2C_CV.py" />
   </ItemGroup>
