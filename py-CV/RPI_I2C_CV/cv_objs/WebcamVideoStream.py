@@ -16,10 +16,11 @@ class WebcamVideoStream:
 
     def update(self):
         #Keep looping until the thread is stopped
-        while(True):
+        while True:
             #if the thread indicator is stopped, stop the 
             if self.stopped:
                 return
+
             (self.grabbed, self.frame) = self.stream.read()
 
     def read(self):

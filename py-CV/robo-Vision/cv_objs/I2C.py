@@ -18,7 +18,7 @@ class I2C(object):
     def i2c_send_byte(self, number):
 
         #Converts to String, then puts it in a list
-        list_send = list(str(number))
+        list_send = list(str(int(number)))
 
         #Iterates through list, and sends the number with a 0.01 second delay
         for i in list_send:
