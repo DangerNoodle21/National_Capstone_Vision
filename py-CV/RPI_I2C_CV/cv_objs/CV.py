@@ -7,31 +7,32 @@ from cv_objs import I2C
 class computerVision:
     
     # Object Variable - for camera Choice and Console out options
-    cube_user_inter = 0
+    
     target_Choice = 0
     addess_i2c = 0
-    i2c_obj = 0
+    __i2c_obj = 0
+    __user_Interface_obj = 0
     
 
-    def __init__(self, choice, address):
-        self.target_Choice = choice
-        self.addess_i2c = address
+    def __init__(self, user_target_choice, user_address):
+        self.target_Choice = user_target_choice
+        self.addess_i2c = user_address
         self.cube_user_inter = UI.userInterface()
         self.i2c_obj = I2C.I2C(self.addess_i2c)
 
     #To find if array is empty or not
-    def Enquiry(self,lis1):
-        if len(lis1) == 0:
+    def enquiry(self,list):
+        if len(list) == 0:
             return False
         else:
             return True
    
 
     #Computer Vision Profile for Power-Cube
-    def cubeProfile(self, stream, filtered_contours):
+    def cubeProfile(self, vid_stream, filtered_contours):
 
         #Adding Gauss Blur, - Number must be odd
-        cube_blur  = cv2.GaussianBlur(stream, (21,21),0)
+        cube_blur  = cv2.GaussianBlur(vid_stream, (21,21),0)
         #Converting picture to Hue, Saturation, Value Array
         hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
 
@@ -142,39 +143,39 @@ class computerVision:
             console_Array.append([c_num, distance, (cx, cy)])
                 
         #drawing distance box
-        self.cube_user_inter.draw_distance_Box(vid_stream)
+        self.__user_Interface_obj.draw_distance_Box(vid_stream)
 
         #Drawing Distance in Main-Box if Something is detected
-        if self.Enquiry(console_Array):
+        if self.enquiry(console_Array):
             #Distance Box
-            self.cube_user_inter.draw_distance_number(console_Array, vid_stream)
+            self.__user_Interface_obj.draw_distance_number(console_Array, vid_stream)
 
             #Sending i2c data
             c_num, distance, (cx, cy) = console_Array[0]
-            self.i2c_obj.i2c_send_byte(distance)
+            self.__i2c_obj.i2c_send_byte(distance)
 
 
             #If center point of Detected Centroid is less than the grabber end line - Left
-            if self.cube_user_inter.check_cube_inRange_left(console_Array, vid_stream):
+            if self.__user_Interface_obj.check_cube_inRange_left(console_Array, vid_stream):
                 #Draw Left line - Left
-                self.cube_user_inter.draw_grabber_lines_red_left(vid_stream)
+                self.__user_Interface_obj.draw_grabber_lines_red_left(vid_stream)
             else:
                 #draw Left line - Green
-                self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
+                self.__user_Interface_obj.draw_grabber_lines_green_left(vid_stream)
 
             #If center point of Detected Centroid is less than the grabber end line - Right
-            if self.cube_user_inter.check_cube_inRange_right(console_Array, vid_stream):
+            if self.__user_Interface_obj.check_cube_inRange_right(console_Array, vid_stream):
                 #Draw Right line - Red
-                self.cube_user_inter.draw_grabber_lines_red_right(vid_stream)
+                self.__user_Interface_obj.draw_grabber_lines_red_right(vid_stream)
             else:
                 #Draw Right Line - Green
-                self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
+                self.__user_Interface_obj.draw_grabber_lines_green_right(vid_stream)
         #If no 
         else:
-            self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
-            self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
+            self.__user_Interface_obj.draw_grabber_lines_green_right(vid_stream)
+            self.__user_Interface_obj.draw_grabber_lines_green_left(vid_stream)
 
             #Send i2c data, with Constant 0
-            self.i2c_obj.i2c_send_byte(0)
+            self.__i2c_obj.i2c_send_byte(0)
 
         return vid_stream
