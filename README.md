@@ -6,7 +6,7 @@ Created: 2/23/2018
 
 Languages: Python, C++ 
 
-This repository holds a computer vision program created for use in robotic competition. It was developed to detect certain predetermined objects, ascertain certain about the object and relay that information back to the user. This project was created to fulfill the requirements for a Master’s Degree in computer science from National University.
+This repository holds a computer vision program created for use during robotic competitions. It was developed to detect certain predetermined objects, ascertain certain details about the object and relay that information back to the user. This project was created to fulfill requirements for a Master’s Degree in computer science from National University.
 
 ##### Goal for this Project:
 
