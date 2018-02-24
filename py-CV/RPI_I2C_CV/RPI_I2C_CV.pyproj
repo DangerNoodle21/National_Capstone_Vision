@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>61128bec-8eaa-4a20-81ea-bb627b261c44</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>RPI_I2C_CV.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cv_i2c_raspi.py" />
     <Compile Include="cv_objs\CV.py" />
     <Compile Include="cv_objs\FPS.py" />
     <Compile Include="cv_objs\I2C.py">
@@ -29,7 +31,6 @@
     <Compile Include="cv_objs\UI.py" />
     <Compile Include="cv_objs\WebcamVideoStream.py" />
     <Compile Include="cv_objs\__init__.py" />
-    <Compile Include="RPI_I2C_CV.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cv_objs\" />

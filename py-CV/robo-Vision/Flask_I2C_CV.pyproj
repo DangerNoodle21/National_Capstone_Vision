@@ -5,7 +5,8 @@
     <ProjectGuid>d8be6512-d317-4c88-84b1-253ad6c6b272</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>robo_Vision.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -32,7 +33,7 @@
     <Compile Include="cv_objs\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="robo_Vision.py" />
+    <Compile Include="flask_i2c_cv.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cv_objs\" />

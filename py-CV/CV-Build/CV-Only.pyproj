@@ -5,7 +5,8 @@
     <ProjectGuid>71ed4933-5508-4c73-bca8-febb1009fe56</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>CV_Build.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,7 +31,7 @@
     <Compile Include="cv_objs\UI.py" />
     <Compile Include="cv_objs\WebcamVideoStream.py" />
     <Compile Include="cv_objs\__init__.py" />
-    <Compile Include="CV_Build.py" />
+    <Compile Include="cv_only.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />
