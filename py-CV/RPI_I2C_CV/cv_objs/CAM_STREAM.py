@@ -1,7 +1,7 @@
 from threading import Thread
 import cv2
 
-class WebcamVideoStream:
+class CAM_STREAM:
 
     def __init__(self, src=0):
         #Initialize the video stream with source of 0

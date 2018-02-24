@@ -25,12 +25,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="cv-only.py" />
+    <Compile Include="cv_objs\CAM_STREAM.py" />
     <Compile Include="cv_objs\CV.py" />
     <Compile Include="cv_objs\FPS.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="cv_objs\UI.py" />
-    <Compile Include="cv_objs\WebcamVideoStream.py" />
     <Compile Include="cv_objs\__init__.py" />
   </ItemGroup>
   <ItemGroup>

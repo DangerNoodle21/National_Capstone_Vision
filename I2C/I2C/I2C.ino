@@ -4,11 +4,6 @@
  Author:	marcd
 */
 
-#include <StandardCplusplus.h>
-#include <vector>
-#include <iterator>
-
-
 #include <Wire.h>
 
 
@@ -32,6 +27,11 @@ void receiveData(int byteCount)
 }  // end while
 
 
+void send_request()
+{
+
+}
+
 void setup()
 {
 
@@ -40,6 +40,8 @@ void setup()
 	Wire.begin(i2c_ADDRESS);
 
 	Wire.onReceive(receiveData);
+	Wire.onRequest(send_request);
+
 
 }
 void loop()
