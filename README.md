@@ -1,10 +1,13 @@
-# National University Capstone Project: Vision Processing and Object Detection
+# Vision Processing for Robotics
 
-
+# Capstone Proejct for National Univeristy
 
 ```
-Goal of this Project
+Goal for this Project:
 
-Process video with Raspberry-Pi's using OpenCV to detect predetermined objects
+Detect Predetermined Objects
+Give the Relative distance to that object
+Stream Video to a viewing location
+
 ```
 
