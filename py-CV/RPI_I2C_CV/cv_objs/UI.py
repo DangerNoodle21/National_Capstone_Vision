@@ -1,18 +1,19 @@
 import cv2
 import numpy as np
 
-class userInterface(object):
+class userInterface:
 
 
     #Object Variables
+    def __init__(self):
 
-    line_type = cv2.LINE_AA
-    line_thinkness_rectangle = 3
-    line_thinkness_grabbers= 5
-    green_color = (0, 255, 0)
-    red_color = (0,0,255)
-    rectangle_multiplyer = 40
-    font = cv2.FONT_HERSHEY_SIMPLEX
+        self.line_type = cv2.LINE_AA
+        self.line_thickness_rectangle = 3
+        self.line_thickness_grabbers = 5
+        self.green_color = (0, 255, 0)
+        self.red_color = (0,0,255)
+        self.rectangle_multiplyer = 40
+        self.font = cv2.FONT_HERSHEY_SIMPLEX
 
 
 
@@ -73,7 +74,7 @@ class userInterface(object):
         e_y = 2 * self.rectangle_multiplyer
         e_x = int((width / 2) + (1.5 *self.rectangle_multiplyer))
 
-        cv2.rectangle(vid_stream, (s_x, s_y),(e_x, e_y), self.green_color, self.line_thinkness_rectangle)
+        cv2.rectangle(vid_stream, (s_x, s_y),(e_x, e_y), self.green_color, self.line_thickness_rectangle)
 
     def draw_distance_number(self, array, vid_stream):
         c_num, distance, (cx, cy) = array[0]
@@ -99,7 +100,7 @@ class userInterface(object):
         s_l_x, s_l_y  = coordinates[0]
         e_l_x, e_l_y = coordinates[1]
 
-        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.green_color, self.line_thinkness_grabbers)
+        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.green_color, self.line_thickness_grabbers)
 
     def draw_grabber_lines_green_right(self, vid_stream):
         
@@ -110,7 +111,7 @@ class userInterface(object):
         s_r_x, s_r_y  = coordinates[2]
         e_r_x, e_r_y = coordinates[3]
 
-        cv2.line(vid_stream, (s_r_x, s_r_y), (e_r_x, e_r_y), self.green_color, self.line_thinkness_grabbers)
+        cv2.line(vid_stream, (s_r_x, s_r_y), (e_r_x, e_r_y), self.green_color, self.line_thickness_grabbers)
 
    
    
@@ -123,7 +124,7 @@ class userInterface(object):
         s_l_x, s_l_y  = coordinates[0]
         e_l_x, e_l_y = coordinates[1]
 
-        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thinkness_grabbers)
+        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thickness_grabbers)
 
     def draw_grabber_lines_red_right(self, vid_stream):
         
@@ -134,4 +135,4 @@ class userInterface(object):
         s_l_x, s_l_y  = coordinates[0]
         e_l_x, e_l_y = coordinates[1]
 
-        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thinkness_grabbers)
+        cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thickness_grabbers)

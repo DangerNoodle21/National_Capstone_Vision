@@ -5,10 +5,9 @@ import time
 class I2C(object):
 
     #Raspberry Pi Bus / Slave Address for sending
-    rpi_bus = smbus2.SMBus(1)
-    I2C_slave_address = 0
 
     def __init__(self, end_address):
+        self.rpi_bus = smbus2.SMBus(1)
         self.I2C_slave_address = end_address
 
     def send_over_wire(self, byte):

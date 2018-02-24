@@ -7,7 +7,6 @@ class computerVision:
 
     # Object Variable - for camera Choice and Console out options
     cube_user_inter = UI.userInterface()
-
     target_Choice = 0
 
     def __init__(self, choice):

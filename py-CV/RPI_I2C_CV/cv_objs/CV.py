@@ -5,20 +5,13 @@ from cv_objs import UI
 from cv_objs import I2C
 
 class computerVision:
-    
-    # Object Variable - for camera Choice and Console out options
-    
-    target_Choice = 0
-    addess_i2c = 0
-    __i2c_obj = 0
-    __user_Interface_obj = 0
-    
+ 
 
     def __init__(self, user_target_choice, user_address):
         self.target_Choice = user_target_choice
         self.addess_i2c = user_address
-        self.cube_user_inter = UI.userInterface()
-        self.i2c_obj = I2C.I2C(self.addess_i2c)
+        self.__user_Interface_obj = UI.userInterface()
+        self.__i2c_obj = I2C.I2C(self.addess_i2c)
 
     #To find if array is empty or not
     def enquiry(self,list):
