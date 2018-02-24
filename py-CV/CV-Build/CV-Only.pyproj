@@ -24,6 +24,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cv-only.py" />
     <Compile Include="cv_objs\CV.py" />
     <Compile Include="cv_objs\FPS.py">
       <SubType>Code</SubType>
@@ -31,7 +32,6 @@
     <Compile Include="cv_objs\UI.py" />
     <Compile Include="cv_objs\WebcamVideoStream.py" />
     <Compile Include="cv_objs\__init__.py" />
-    <Compile Include="cv_only.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6" />

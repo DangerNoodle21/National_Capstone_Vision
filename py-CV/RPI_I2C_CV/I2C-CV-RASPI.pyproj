@@ -3,14 +3,15 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>61128bec-8eaa-4a20-81ea-bb627b261c44</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>
     </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>RPI_I2C_CV</Name>
+    <Name>I2C-CV-RASPI</Name>
     <RootNamespace>RPI_I2C_CV</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,7 +23,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="cv_i2c_raspi.py" />
     <Compile Include="cv_objs\CV.py" />
     <Compile Include="cv_objs\FPS.py" />
     <Compile Include="cv_objs\I2C.py">
@@ -31,6 +31,7 @@
     <Compile Include="cv_objs\UI.py" />
     <Compile Include="cv_objs\WebcamVideoStream.py" />
     <Compile Include="cv_objs\__init__.py" />
+    <Compile Include="i2c-cv-raspi.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cv_objs\" />

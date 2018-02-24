@@ -11,7 +11,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Flask_I2C_CV</Name>
+    <Name>FLASK-I2C-CV</Name>
     <RootNamespace>robo-Vision</RootNamespace>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
@@ -33,7 +33,7 @@
     <Compile Include="cv_objs\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="flask_i2c_cv.py" />
+    <Compile Include="flask-i2c-cv.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cv_objs\" />
