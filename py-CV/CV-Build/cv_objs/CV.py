@@ -142,6 +142,10 @@ class computerVision:
             #Distance Box
             self.cube_user_inter.draw_distance_number(console_Array, vid_stream)
 
+            c_num, distance, (cx, cy) = console_Array[0]
+
+            print("Contour #: ", c_num, "Distance: ", distance)
+
 
             #If center point of Detected Centroid is less than the grabber end line - Left
             if self.cube_user_inter.check_cube_inRange_left(console_Array, vid_stream):

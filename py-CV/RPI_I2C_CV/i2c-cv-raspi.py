@@ -1,8 +1,6 @@
 from __future__ import print_function
 from cv_objs import CV
-from cv_objs import FPS
 from cv_objs import UI
-from cv_objs import WebcamVideoStream
 from imutils.video import WebcamVideoStream
 from imutils.video import FPS
 import argparse
