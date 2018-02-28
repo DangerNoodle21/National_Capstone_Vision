@@ -7,8 +7,6 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CV-Only", "CV-Build\CV-Only
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "FLASK-I2C-CV", "robo-Vision\FLASK-I2C-CV.pyproj", "{D8BE6512-D317-4C88-84B1-253AD6C6B272}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "I2C-CV-RASPI", "RPI_I2C_CV\I2C-CV-RASPI.pyproj", "{61128BEC-8EAA-4A20-81EA-BB627B261C44}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +17,6 @@ Global
 		{71ED4933-5508-4C73-BCA8-FEBB1009FE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8BE6512-D317-4C88-84B1-253AD6C6B272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8BE6512-D317-4C88-84B1-253AD6C6B272}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61128BEC-8EAA-4A20-81EA-BB627B261C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61128BEC-8EAA-4A20-81EA-BB627B261C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

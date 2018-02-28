@@ -3,7 +3,7 @@ import cv2
 
 class CAM_STREAM:
 
-    def __init__(self, src=0):
+    def __init__(self, src):
         #Initialize the video stream with source of 0
         self.stream = cv2.VideoCapture(src)
         (self.grabbed, self.frame) = self.stream.read()

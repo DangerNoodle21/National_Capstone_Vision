@@ -29,6 +29,7 @@
     <Compile Include="cv_objs\FPS.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="cv_objs\I2C.py" />
     <Compile Include="cv_objs\UI.py" />
     <Compile Include="cv_objs\__init__.py" />
   </ItemGroup>

@@ -6,19 +6,10 @@ from cv_objs import *
 class computerVision:
 
     # Object Variable - for camera Choice and Console out options
-    cube_user_inter = UI.userInterface()
     target_Choice = 0
 
     def __init__(self, choice):
         self.target_Choice = choice
-
-    #To find if array is empty or not
-    def Enquiry(self,lis1):
-        if len(lis1) == 0:
-            return False
-        else:
-            return True
-   
 
     #Computer Vision Profile for Power-Cube
     def cubeProfile(self, stream, filtered_contours):
@@ -134,37 +125,6 @@ class computerVision:
             #Adding Information to for console output
             console_Array.append([c_num, distance, (cx, cy)])
                 
-        #drawing distance box
-        self.cube_user_inter.draw_distance_Box(vid_stream)
+       
 
-        #Drawing Distance in Main-Box if Something is detected
-        if self.Enquiry(console_Array):
-            #Distance Box
-            self.cube_user_inter.draw_distance_number(console_Array, vid_stream)
-
-            c_num, distance, (cx, cy) = console_Array[0]
-
-            print("Contour #: ", c_num, "Distance: ", distance)
-
-
-            #If center point of Detected Centroid is less than the grabber end line - Left
-            if self.cube_user_inter.check_cube_inRange_left(console_Array, vid_stream):
-                #Draw Left line - Left
-                self.cube_user_inter.draw_grabber_lines_red_left(vid_stream)
-            else:
-                #draw Left line - Green
-                self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
-
-            #If center point of Detected Centroid is less than the grabber end line - Right
-            if self.cube_user_inter.check_cube_inRange_right(console_Array, vid_stream):
-                #Draw Right line - Red
-                self.cube_user_inter.draw_grabber_lines_red_right(vid_stream)
-            else:
-                #Draw Right Line - Green
-                self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
-        #If no 
-        else:
-            self.cube_user_inter.draw_grabber_lines_green_right(vid_stream)
-            self.cube_user_inter.draw_grabber_lines_green_left(vid_stream)
-
-        return vid_stream
+        return console_Array, vid_stream
