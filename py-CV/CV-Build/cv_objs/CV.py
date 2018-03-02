@@ -20,8 +20,8 @@ class computerVision:
         hsv = cv2.cvtColor(cube_blur, cv2.COLOR_BGR2HSV)
 
         #Lower / Upper Limits for Color Selection
-        lower_yellow = np.array([24,50,62])
-        upper_yellow = np.array([59,192,251])
+        lower_yellow = np.array([24,28,92])
+        upper_yellow = np.array([45,138,252])
 
         #Removing Everything but the desired color
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
