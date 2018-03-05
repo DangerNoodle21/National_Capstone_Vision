@@ -33,4 +33,4 @@ This repository holds a computer vision program created for use during robotic c
 - time
 - smbus2
 
-#### Wiki For this project has the detailed breakdown of how the program works along various diagrams
+#### Wiki For this project has a detailed breakdown of this project. It is current being built.
