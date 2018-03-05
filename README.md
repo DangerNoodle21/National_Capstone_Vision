@@ -13,9 +13,9 @@ This repository holds a computer vision program created for use during robotic c
 - [x] Detect Power Cube Object
 - [x] Give the Relative distance to that object
 - [x] Stream Video to a viewing location
-- [ ] Have Selectable Profiles
+- [ ] Have Multiple Object Profiles
 - [ ] Create Calibration Scheme
-- [ ] Combine the three different project into 1
+- [x] Inegrade Raspi-CV Project into one project
 
 #### This project has 3 Different version due to it development and testing on different environments
 
@@ -32,3 +32,5 @@ This repository holds a computer vision program created for use during robotic c
 - threading
 - time
 - smbus2
+
+#### Wiki For this project has the detailed breakdown of how the program works along various diagrams
