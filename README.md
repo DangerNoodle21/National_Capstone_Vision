@@ -1,6 +1,6 @@
 ### Vision Processing for Robotics
 
-#### Capstone Project for National University
+#### Capstone Project for a Master of Computer Science Degree offered by National University
 
 Created: 2/23/2018
 
@@ -10,27 +10,51 @@ This repository holds a computer vision program created for use during robotic c
 
 ##### Goal for this Project:
 
-- [x] Detect Power Cube Object
-- [x] Give the Relative distance to that object
-- [x] Stream Video to a viewing location
-- [ ] Have Multiple Object Profiles
-- [ ] Create Calibration Scheme
-- [x] Inegrade Raspi-CV Project into one project
+- [x] Detect predetermined objec 
+- [x] Calculate relaive distance from detected object to camera
+- [x] Stream video to an external location
+- [x] Integrate all features into one program
+- [ ] Have multiple object profiles
+- [ ] Create object profile calibration scheme
 
-#### This project has 3 Different version due to it development and testing on different environments
 
-1. CV-Only - Only the computer Vision aspect of the project. Will only stream video locally
-2. FLASK-I2C-CV - Enables a MJPEG Stream to the local IP at port :5000 with I2C / CV. Meant to run on a Raspberry Pi 3
-3. I2C-CV-RASPI - Have the CV and I2C, meant to run on a Raspberry Pi 3
+#### This project has 2 versions, each stored on its own branch
+
+1. Master Brnach - CV-Build - The main computer vision program which is now compadible with windows / linux, while still support I2C functions
+2. PreformanceTesting_Flask - Trying to integrate FLASK streaming while working on preformance enhancments and such. 
+
+#### To use, simply clone this repository and run the main file from the commmand line:
+
+```
+git clone https://github.com/Shark-Bit/Capstone_FRC-Vision_2018
+```
 
 #### Required Python Library’s: 
 
+All of these listed library may be installed using Python instll PIP. Usage is as follows:
+
+
+```python
+pip install *library*
+```
 - imutils
 - argparse
-- cv2
 - numpy
 - threading
-- time
 - smbus2
 
-#### Wiki For this project has a detailed breakdown of this project. It is current being built.
+Also needed for this project is OpenCV. Instalion varies by system.
+
+- cv2
+
+
+### Command Line Agrguments
+
+This program uses vairious command line arguments to employ the various features. See below to about how employ the various features of the program. The default state of the program will run with no agruments given and only run on the local machine.
+
+
+
+
+
+
+#### Wiki For this project has a detailed breakdown of this project. It is currently being populated
