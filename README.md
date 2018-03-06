@@ -6,6 +6,7 @@
 #### Languages:
 > _Python_, _C++_
 ***
+***
 
 
 
@@ -18,7 +19,7 @@ Goals for this Project | Explanation
 **Enable Detectin Feedback** | _Created user intefaace to have detected object identifed on video stream and distance easily viewable_
 **Enable Serial Communications** | _Send data using I2C protocal and stream processed video to desired destion_
 **Combine Features** | _Had multiple projects, combined them into one. Compadable with Linux, Mac and Window Operating systems_
-**Create Object Profile Calibration Scheme** | _Not implmented_
+**Create Object Profile Calibration Scheme** | _Not implemented_
 
 ## Usage
 To use, simply clone the repository and run the main Python file
