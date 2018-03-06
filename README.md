@@ -1,12 +1,14 @@
-### Vision Processing for Robotics
+### Computer Vision for Robotics
 
-#### Capstone Project for a Master of Computer Science Degree offered by National University
+**Created: 2/23/2018**
 
-Created: 2/23/2018
+**Languages: Python, C++** 
 
-Languages: Python, C++ 
+**Features:**
+- Object detection
+- Relative distance calculation from object to camera
+- serial communications
 
-This repository holds a computer vision program created for use during robotic competitions. It was developed to detect certain predetermined objects, ascertain certain details about the object and relay that information back to the user. This project was created to fulfill requirements for a Master’s Degree in computer science from National University.
 
 ##### Goal for this Project:
 
@@ -56,5 +58,5 @@ This program uses vairious command line arguments to employ the various features
 
 
 
-
+#### Capstone Project for a Master of Computer Science Degree offered by National University
 #### Wiki For this project has a detailed breakdown of this project. It is currently being populated
