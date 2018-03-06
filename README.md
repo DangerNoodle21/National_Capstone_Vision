@@ -1,16 +1,16 @@
-### Computer Vision for Robotics
+## Computer Vision for Robotics
 
 **Created: 2/23/2018**
 
 **Languages: Python, C++** 
 
 **Features:**
-- Object detection
-- Relative distance calculation from object to camera
-- serial communications
+- _Object detection_
+- _Relative distance calculation from object to camera_
+- _serial communications_
 
 
-##### Goal for this Project:
+##### Goals for this Project:
 
 - [x] Detect predetermined objec 
 - [x] Calculate relaive distance from detected object to camera
