@@ -7,7 +7,9 @@
 
 **Features:**
 > _Object detection_
+
 > _Relative distance calculation from object to camera_
+
 > _serial communications_
 
 
