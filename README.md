@@ -1,25 +1,23 @@
 # Computer Vision for Robotics
 
+### Created: 2/23/2018
 
-**Created: 2/23/2018**
+### Languages: Python, C++
 
-**Languages: Python, C++** 
+Features | Goals for this Project
+-------- | ------
+Object detection | - [x] Calculate relaive distance from detected object to camera
+Relative distance calculation from object to camera | - [x] Stream video to an external location
+Serial communications | - [x] Integrate all features into one program
+ | - [ ] Have multiple object profiles
+ | - [ ] Create object profile calibration scheme
 
-**Features:**
-> _Object detection_
-
-> _Relative distance calculation from object to camera_
-
-> _serial communications_
 
 
-## Goals for this Project:
-- [x] Detect predetermined objec 
-- [x] Calculate relaive distance from detected object to camera
-- [x] Stream video to an external location
-- [x] Integrate all features into one program
-- [ ] Have multiple object profiles
-- [ ] Create object profile calibration scheme
+ 
+
+
+
 
 
 ## Branches
