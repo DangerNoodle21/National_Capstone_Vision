@@ -4,35 +4,27 @@
 
 ### Languages: Python, C++
 
-Features | Goals for this Project
--------- | ------
-Object detection | - [x] Calculate relaive distance from detected object to camera
-Relative distance calculation from object to camera | - [x] Stream video to an external location
-Serial communications | - [x] Integrate all features into one program
- | - [ ] Have multiple object profiles
- | - [ ] Create object profile calibration scheme
-
-
-
- 
-
-
-
-
-
-## Branches
-
-1. Master - The main computer vision program. Compadible with windows / linux while still supporting I2C functions
-
-2. PreformanceTesting_Flask - Trying to integrate FLASK streaming while working on preformance enhancments and such. 
-
-
+Goals for this Project | Explanation
+---------------------- | --------------------
+Process image to detect object | Dection an object from a video stream after a vision profile of the object has build and calibrated_
+Calculte Distance to Object | _Relative distance of object detected to camera calculated using a calibraion shot comparison_
+Enable Detectin Feedback | _Created user intefaace to have detected object identifed on video stream and distance easily viewable_
+Enable serial communications | _Send data using I2C protocal and stream processed video to desired destion_
+Combine Features | _Had multiple projects, combined them into one. Compadable with Linux, Mac and Window Operating systems_
+Have multiple object profiles | _Not implemented_
+Create object profile calibration scheme | _Not implmented_
 
 ## Usage
 To use, simply clone the repository and run the main Python file
 ```
 git clone https://github.com/Shark-Bit/Capstone_FRC-Vision_2018
 ```
+
+## Command Line Agrguments
+This program uses vairious command line arguments to employ the various features. See below to about how employ the various features of the program. The default state of the program will run with no agruments given and only run on the local machine.
+
+
+
 
 ## Required Python Library’s: 
 All of these listed library may be installed using Python instll PIP. Usage is as follows:
@@ -49,13 +41,19 @@ Also needed for this project is OpenCV. Instalion varies by system.
 
 - cv2
 
+## Branches
 
-## Command Line Agrguments
-This program uses vairious command line arguments to employ the various features. See below to about how employ the various features of the program. The default state of the program will run with no agruments given and only run on the local machine.
+1. Master - The main computer vision program. Compadible with windows / linux while still supporting I2C functions
+
+2. PreformanceTesting_Flask - Trying to integrate FLASK streaming while working on preformance enhancments and such. 
 
 
 
 
 
-#### Capstone Project for a Master of Computer Science Degree offered by National University
-#### Wiki For this project has a detailed breakdown of this project. It is currently being populated
+
+
+
+
+
+#### This is a Capstone Project build to fulfill requriments for a Master of Computer Science Degree offered by National University
