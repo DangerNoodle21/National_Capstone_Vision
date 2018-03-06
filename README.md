@@ -1,7 +1,7 @@
 ## Computer Vision for Robotics
 
-**Created: 2/23/2018**
 
+**Created: 2/23/2018**
 **Languages: Python, C++** 
 
 **Features:**
@@ -10,8 +10,7 @@
 - _serial communications_
 
 
-##### Goals for this Project:
-
+## Goals for this Project:
 - [x] Detect predetermined objec 
 - [x] Calculate relaive distance from detected object to camera
 - [x] Stream video to an external location
@@ -20,22 +19,22 @@
 - [ ] Create object profile calibration scheme
 
 
-#### This project has 2 versions, each stored on its own branch
+## Branches
 
-1. Master Brnach - CV-Build - The main computer vision program which is now compadible with windows / linux, while still support I2C functions
+1. Master - The main computer vision program. Compadible with windows / linux while still supporting I2C functions
+
 2. PreformanceTesting_Flask - Trying to integrate FLASK streaming while working on preformance enhancments and such. 
 
-#### To use, simply clone this repository and run the main file from the commmand line:
 
+
+## Usage
+To use, simply clone the repository and run the main Python file
 ```
 git clone https://github.com/Shark-Bit/Capstone_FRC-Vision_2018
 ```
 
-#### Required Python Library’s: 
-
+## Required Python Library’s: 
 All of these listed library may be installed using Python instll PIP. Usage is as follows:
-
-
 ```python
 pip install *library*
 ```
@@ -50,8 +49,7 @@ Also needed for this project is OpenCV. Instalion varies by system.
 - cv2
 
 
-### Command Line Agrguments
-
+## Command Line Agrguments
 This program uses vairious command line arguments to employ the various features. See below to about how employ the various features of the program. The default state of the program will run with no agruments given and only run on the local machine.
 
 
