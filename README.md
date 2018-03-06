@@ -6,14 +6,10 @@
 #### Languages:
 > _Python_, _C++_
 ***
-***
-
-
-
 
 
 **Goals for this Project** | _Explanation_
----------------------- | --------------------
+------------------------ | --------------------
 **Process image to detect object** | _Detecting a selected object within a picture using computer processing_
 **Calculate Distance to Object** | _Relative distance of object detected to camera calculated using a calibration shot comparison_
 **Enable Detecting Feedback** | _Created user interface to have detected object identified on video stream and distance easily viewable_
@@ -30,6 +26,18 @@ git clone https://github.com/Shark-Bit/Capstone_FRC-Vision_2018
 ## Command Line Arguments
 This program uses various command line arguments to employ the various features. See below to about how employ the various features of the program. The default state of the program will run with no arguments given and only run on the local machine.
 
+` -Arg OPTION`
+
+Example:
+
+`-i2c True`
+
+**Argument** | _Option_ | **Default** | _Explanation_
+------------ | -------- | ----------- | --------------
+`-i2c` | _Bool_ | **False** |  _To Turn On / Off I2C connection output_
+`-add` | _Int_ | **0x04** |  _Address for I2C connection Output_
+`-UI` | _Bool_ | **True** |  _To turn on / off output interface elements_
+`-t` | _Int_ | **1** |  _Target profile selector_
 
 
 
