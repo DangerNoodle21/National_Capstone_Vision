@@ -13,13 +13,12 @@
 
 Goals for this Project | Explanation
 ---------------------- | --------------------
-Process image to detect object | Dection an object from a video stream after a vision profile of the object has build and calibrated_
-Calculte Distance to Object | _Relative distance of object detected to camera calculated using a calibraion shot comparison_
-Enable Detectin Feedback | _Created user intefaace to have detected object identifed on video stream and distance easily viewable_
-Enable serial communications | _Send data using I2C protocal and stream processed video to desired destion_
-Combine Features | _Had multiple projects, combined them into one. Compadable with Linux, Mac and Window Operating systems_
-Have multiple object profiles | _Not implemented_
-Create object profile calibration scheme | _Not implmented_
+**Process image to detect object** | Dection an object from a video stream after a vision profile of the object has build and calibrated_
+**Calculte Distance to Object** | _Relative distance of object detected to camera calculated using a calibraion shot comparison_
+**Enable Detectin Feedback** | _Created user intefaace to have detected object identifed on video stream and distance easily viewable_
+**Enable Serial Communications** | _Send data using I2C protocal and stream processed video to desired destion_
+**Combine Features** | _Had multiple projects, combined them into one. Compadable with Linux, Mac and Window Operating systems_
+**Create Object Profile Calibration Scheme** | _Not implmented_
 
 ## Usage
 To use, simply clone the repository and run the main Python file
