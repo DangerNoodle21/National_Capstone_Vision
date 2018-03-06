@@ -1,8 +1,9 @@
 # Computer Vision for Robotics
 
-### Created: 2/23/2018
+#### Created: 2/23/2018
 
-### Languages: Python, C++
+#### Languages: Python, C++
+
 
 Goals for this Project | Explanation
 ---------------------- | --------------------
