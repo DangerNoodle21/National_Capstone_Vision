@@ -12,7 +12,7 @@
 
 
 
-Goals for this Project | Explanation
+**Goals for this Project** | _Explanation_
 ---------------------- | --------------------
 **Process image to detect object** | _Detecting a selected object within a picture using computer processing_
 **Calculate Distance to Object** | _Relative distance of object detected to camera calculated using a calibration shot comparison_
