@@ -47,7 +47,6 @@ class userInterface:
 
             #Drawing the distance Number
             self.draw_distance_number(console_array, vid_stream)
-            print("Contour #: ", c_num, "Distance: ", distance)
 
             if cx < e_l_x:
                 self.grabber_line_red_left(vid_stream)

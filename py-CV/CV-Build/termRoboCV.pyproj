@@ -5,15 +5,14 @@
     <ProjectGuid>71ed4933-5508-4c73-bca8-febb1009fe56</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>main-roboCV.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>termRoboCV</Name>
     <RootNamespace>CV-Build</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.6-32</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,7 +34,7 @@
     <Compile Include="main-roboCV.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.6-32" />
+    <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cv_objs\" />
