@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>22206bb4-bd89-4360-9077-f3be70aaf35e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>flaskRoboCV.py</StartupFile>
+    <StartupFile>mainFlaskCV.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="flaskRoboCV.py" />
+    <Compile Include="cv_objs\camera.py" />
+    <Compile Include="cv_objs\CAM_STREAM.py" />
+    <Compile Include="cv_objs\CV.py" />
+    <Compile Include="cv_objs\FPS.py" />
+    <Compile Include="cv_objs\I2C.py" />
+    <Compile Include="cv_objs\UI.py" />
+    <Compile Include="cv_objs\__init__.py" />
+    <Compile Include="mainFlaskCV.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="cv_objs\" />
+    <Folder Include="templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="templates\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
