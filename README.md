@@ -7,7 +7,7 @@
 > 2/23/2018
 
 #### Languages:
-> _Python_, _C++_
+> _Python 3_, _C++_
 ***
 
 
