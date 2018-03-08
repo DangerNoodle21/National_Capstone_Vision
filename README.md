@@ -1,6 +1,6 @@
 # Computer Vision for Robotics
 
-## This is a python computer vision program used for detecting objects. This project was created to be used during robotic competitions such as the First Robotics Competition (FRC).
+## This is a computer vision program written with Python used for object detection. This project was created for the use in robotic competitions such as the First Robotics Competition (FRC).
 
 
 #### Created:
