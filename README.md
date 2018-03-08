@@ -32,7 +32,7 @@ Various command line arguments are used to employ the listed features and offer 
 
 Example:
 
-`-i2c True`
+`-i2c 1`
 
 **Argument** | _Option_ | **Default** | _Explanation_
 ------------ | -------- | ----------- | --------------
