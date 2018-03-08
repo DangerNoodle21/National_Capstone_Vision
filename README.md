@@ -13,7 +13,7 @@
 
 **Features** | _Explanation_
 ------------------------ | --------------------
-**Object Detection** | _Detecting a selected object within a picture using computer processing_
+**Object Detection** | _Detecting a selected object within a picture using image processing_
 **Calculate Distance to Object** | _Relative distance of object detected to camera calculated using a calibration shot comparison_
 **Detection Feedback** | _Created user interface to have detected object identified on video stream and distance easily viewable_
 **Serial Communications** | _Send data using I2C protocol and stream processed video to desired destining_
