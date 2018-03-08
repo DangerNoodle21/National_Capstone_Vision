@@ -2,6 +2,7 @@
 
 ### This is a computer vision program written with Python used for object detection. This project was created for the use in robotic competitions such as the First Robotics Competition (FRC).
 
+#### For Program specifics, please see the [Wiki](https://github.com/Shark-Bit/Capstone_FRC-Vision_2018/wiki)
 
 #### Created:
 > 2/23/2018
