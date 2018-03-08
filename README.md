@@ -1,6 +1,6 @@
 # Computer Vision for Robotics
 
-## This is a computer vision program written with Python used for object detection. This project was created for the use in robotic competitions such as the First Robotics Competition (FRC).
+### This is a computer vision program written with Python used for object detection. This project was created for the use in robotic competitions such as the First Robotics Competition (FRC).
 
 
 #### Created:
@@ -57,6 +57,7 @@ Also needed for this project is OpenCV. Ins talion varies by system.
 - cv2
 
 
+## Status of Project
 
 
 #### This is a Capstone Project build to fulfill requirements for a Master of Computer Science Degree offered by National University
