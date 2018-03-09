@@ -2,7 +2,7 @@
 
 ### This is a computer vision program written with Python used for object detection. This project was created for the use in robotic competitions such as the First Robotics Competition (FRC).
 
-#### For Program specifics, please see the [Wiki](https://github.com/Shark-Bit/Capstone_FRC-Vision_2018/wiki)
+#### For program specifics, please see the [Wiki](https://github.com/Shark-Bit/Capstone_FRC-Vision_2018/wiki)
 
 #### Created:
 > 2/23/2018
@@ -11,8 +11,9 @@
 > _Python 3_, _C++_
 ***
 
+## Features of the Project
 
-**Features** | _Explanation_
+**Feature** | _Explanation_
 ------------------------ | --------------------
 **Object Detection** | _Detecting a selected object within a picture using image processing_
 **Calculate Distance to Object** | _Relative distance of object detected to camera calculated using a calibration shot comparison_
@@ -53,12 +54,10 @@ pip install *library*
 - numpy
 - smbus2
 
-Also needed for this project is OpenCV. Ins talion varies by system.
+Also needed for this project is [OpenCV](https://opencv.org/).
 
 - cv2
 
 
 ## Status of Project
-
-
-#### This is a Capstone Project build to fulfill requirements for a Master of Computer Science Degree offered by National University
+This was a Capstone Project build to fulfill requirements for a Master of Computer Science Degree offered by National University. As of right now, it is being used as resource for the various parties is was built for. Minor features will be implemented as well as performance experiments in regards to threading. These expierments will be merged into the main branch if performance it the future*.
