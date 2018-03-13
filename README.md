@@ -11,9 +11,9 @@
 > _Python 3_, _C++_
 ***
 
-## Features of the Project
+## Project Features
 
-**Feature** | _Explanation_
+**Item** | _Explanation_
 ------------------------ | --------------------
 **Object Detection** | _Detecting a selected object within a picture using image processing_
 **Calculate Distance to Object** | _Relative distance of object detected to camera calculated using a calibration shot comparison_
