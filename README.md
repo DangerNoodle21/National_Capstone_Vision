@@ -13,7 +13,7 @@
 
 ## Project Features
 
-**Item** | _Explanation_
+**Function** | _Explanation_
 ------------------------ | --------------------
 **Object Detection** | _Detecting a selected object within a picture using image processing_
 **Calculate Distance to Object** | _Relative distance of object detected to camera calculated using a calibration shot comparison_
