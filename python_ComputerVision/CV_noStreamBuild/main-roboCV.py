@@ -40,7 +40,7 @@ def main():
         from cv_objs.I2C import I2C
         i2c_obj = I2C.I2C(i2cAdd)
 
-    
+
     while(True):
         #Grabs Video Stream
         vid_stream = vs.read()
