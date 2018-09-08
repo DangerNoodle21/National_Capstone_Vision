@@ -1,9 +1,9 @@
 import numpy as np
 import cv2
 import argparse
-from cv_objs import *
+from ObjectClasses import *
 
-class computerVision:
+class ObjectProfiles:
 
     # Object Variable - for camera Choice and Console out options
     target_Choice = 0
@@ -25,13 +25,13 @@ class computerVision:
 
         #Removing Everything but the desired color
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
-          
+
         #returns an Arrays "Contours"
         _, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         #Compare Value to Eliminate Duplicate Contours
         compare_value = 0
-        
+
         #Filtering For Loop for Contours based up aspect-ratio of cube - Aspect Ratio : 0.80139
 
         for c in contours:
@@ -43,26 +43,26 @@ class computerVision:
             width_filter, height_filter = rect_filter[1]
 
             #to Avoid Division by Zeros errors
-            if height_filter == 0: 
+            if height_filter == 0:
                 continue
             #If distance is over 1000 inches, skip
-            if (13 * 512.61) / width_filter > 600: 
+            if (13 * 512.61) / width_filter > 600:
                 continue
             #Aspect Ratio Filter, Above & equal to 1, skip
-            elif width_filter  / height_filter >= 1: 
+            elif width_filter  / height_filter >= 1:
                 continue
-            elif width_filter  / height_filter < 0.5: 
+            elif width_filter  / height_filter < 0.5:
                 continue
             #Avoiding duplicate contours
-            elif width_filter  / height_filter == compare_value: 
+            elif width_filter  / height_filter == compare_value:
                 continue
-            else: 
+            else:
                compare_value  = width_filter/height_filter
                filtered_contours.append(c)
 
             return filtered_contours
 
-    
+
     #Main Computer-Vision Method
     def comp_vision_start(self, vid_stream):
 
@@ -76,7 +76,7 @@ class computerVision:
         if self.target_Choice > 0:
             self.cubeProfile(vid_stream, filtered_contours)
 
-          
+
         #Number of Filtered Contours
         con_filtered = len(filtered_contours)
         #Array for drawing contours
@@ -115,7 +115,7 @@ class computerVision:
             #Find Height / Width for Distance Calculation
             width, height = rect[1]
 
-                
+
             # Focal length = (Pixel Width x Distance) / Width
             # FL = (196 x 34in) / 13 in = 512.61
 
@@ -124,7 +124,7 @@ class computerVision:
 
             #Adding Information to for console output
             console_Array.append([c_num, distance, (cx, cy)])
-                
-       
+
+
 
         return console_Array, vid_stream

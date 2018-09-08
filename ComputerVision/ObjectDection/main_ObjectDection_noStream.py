@@ -1,10 +1,10 @@
 from __future__ import print_function
 import cv2
 import imutils
-from cv_objs import UI
-from cv_objs import CV
-from cv_objs import CAM_STREAM
 import argparse
+
+from ObjectClasses import *
+
 
 
 
@@ -31,34 +31,33 @@ def main():
     i2cAdd = args["i2C_Address"]
     target = args["target"]
 
-    vs = CAM_STREAM.CAM_STREAM(0).start()
-    compVision = CV.computerVision(target)
-    user_Inter = UI.userInterface()
+    videoIntake = c_CameraIntake.CameraIntake(0).start()
+    objectProfile = c_ObjectProfiles.ObjectProfiles(target)
+    userInterface = c_UserInterface.UserInterface()
 
 
     if i2cChoice:
-        from cv_objs.I2C import I2C
-        i2c_obj = I2C.I2C(i2cAdd)
+        from ObjectClasses.c_I2Cinterface import I2Cinterface
+        i2cObject = c_I2Cinterface.I2Cinterface(i2cAdd)
 
 
     while(True):
         #Grabs Video Stream
-        vid_stream = vs.read()
+        videoStream = videoIntake.read()
 
         #Processes Video, Return Array hold contour data, processed video
-        console_Array, processed_vid = compVision.comp_vision_start(vid_stream)
+        console_Array, processed_vid = objectProfile.comp_vision_start(videoStream)
 
         #Adding UI elements
-
         if uichoice == 1:
-            user_Inter.draw_UI_elements(console_Array, processed_vid)
+            userInterface.draw_UI_elements(console_Array, processed_vid)
 
         #If enabled, send I2C data
         if i2cChoice == 1:
-            i2c_obj.send_I2C_data(console_Array)
+            i2cObject.send_I2C_data(console_Array)
 
         #Resizing Video
-        processed_vid = imutils.resize(processed_vid, width=250)
+        processesVideo = imutils.resize(processed_vid, width=250)
 
         #Showing Video
         cv2.imshow("Threaded / Processed Video", processed_vid)

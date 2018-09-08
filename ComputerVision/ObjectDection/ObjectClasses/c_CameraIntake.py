@@ -1,7 +1,7 @@
 from threading import Thread
 import cv2
 
-class CAM_STREAM:
+class CameraIntake:
 
     def __init__(self, src):
         #Initialize the video stream with source of 0
@@ -17,7 +17,7 @@ class CAM_STREAM:
     def update(self):
         #Keep looping until the thread is stopped
         while(True):
-            #if the thread indicator is stopped, stop the 
+            #if the thread indicator is stopped, stop the
             if self.stopped:
                 return
             (self.grabbed, self.frame) = self.stream.read()

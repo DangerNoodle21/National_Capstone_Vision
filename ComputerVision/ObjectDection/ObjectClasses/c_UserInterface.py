@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-class userInterface:
+class UserInterface:
 
 
     #Object Variables
@@ -38,7 +38,7 @@ class userInterface:
 
         #Check to see if Contour was found
         if self.Enquiry(console_array):
-            
+
             c_num, distance, (cx, cy) = console_array[0]
             coordinates = self.get_xy_grabber_lines(vid_stream)
             e_l_x, e_l_y  = coordinates[1]
@@ -93,7 +93,7 @@ class userInterface:
 
     def draw_distance_Box(self, vid_stream):
         height, width = vid_stream.shape[0:2]
-        
+
         #S_L_Y = Start Left X Coordinate / S_R_Y = Start Right X Coordinate
         s_x = int((width / 2) - (1.5 *self.rectangle_multiplyer))
         s_y = self.rectangle_multiplyer
@@ -120,7 +120,7 @@ class userInterface:
 
 
     def grabber_line_green_left(self, vid_stream):
-        
+
         #getting line coordinates
         coordinates = self.get_xy_grabber_lines(vid_stream)
 
@@ -131,7 +131,7 @@ class userInterface:
         cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.green_color, self.line_thinkness_grabbers)
 
     def grabber_line_green_right(self, vid_stream):
-        
+
         #getting line coordinates
         coordinates = self.get_xy_grabber_lines(vid_stream)
 
@@ -141,10 +141,10 @@ class userInterface:
 
         cv2.line(vid_stream, (s_r_x, s_r_y), (e_r_x, e_r_y), self.green_color, self.line_thinkness_grabbers)
 
-   
-   
+
+
     def grabber_line_red_left(self, vid_stream):
-        
+
         #getting line coordinates
         coordinates = self.get_xy_grabber_lines(vid_stream)
 
@@ -155,7 +155,7 @@ class userInterface:
         cv2.line(vid_stream, (s_l_x, s_l_y), (e_l_x, e_l_y), self.red_color, self.line_thinkness_grabbers)
 
     def grabber_line_red_right(self, vid_stream):
-        
+
         #getting line coordinates
         coordinates = self.get_xy_grabber_lines(vid_stream)
 

@@ -2,7 +2,7 @@ import smbus2
 import time
 
 
-class I2C:
+class I2Cinterface:
 
     #Raspberry Pi Bus / Slave Address for sending
 
@@ -38,7 +38,7 @@ class I2C:
         if self.Enquiry(console_array):
 
             c_num, distance, (cx, cy) = console_array[0]
-            
+
             self.convert_Number(distance)
 
         else:
