@@ -60,4 +60,4 @@ Also needed for this project is [OpenCV](https://opencv.org/).
 
 
 ## Status of Project
-This was a Capstone Project build to fulfill requirements for a Master of Computer Science Degree offered by National University. As of right now, it is being used as resource for the various parties is was built for. Minor features will be implemented as well as performance experiments in regards to threading. These expierments will be merged into the main branch if performance it the future*.
+This was a Capstone Project build to fulfill requirements for a Master of Computer Science Degree offered by National University. As of right now, it is being used as resource for the various parties is was built for. Minor features will be implemented as well as performance experiments regarding multi-threading. These experiments will be merged into the main branch if performance it the future*.
