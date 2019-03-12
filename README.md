@@ -1,6 +1,6 @@
 # Computer Vision for Robotics
 
-### This is a computer vision program written with Python used for object detection. This project was created for the use in robotic competitions such as the First Robotics Competition (FRC).
+### This is a computer vision program used for basic object recognition. The project was created for the use in robotic competitions such as the First Robotics Competition (FRC) and the fulfillment in the completion of my master’s degree. It uses python / C++ to recognize a predetermined object (a yellow box).
 
 #### For program specifics, please see the [Wiki](https://github.com/Shark-Bit/Capstone_FRC-Vision_2018/wiki)
 
